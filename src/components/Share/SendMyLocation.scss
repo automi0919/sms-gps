@@ -1,0 +1,34 @@
+.my-container {
+  margin-top: 0;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    span {
+      font-weight: 600;
+      font-family: 'Segoe UI';
+    }
+    .info-title {
+      text-transform: uppercase;
+      display: block;
+      text-align: center;
+      font-size: 13px;
+    }
+    .info-detail {
+      font-size: 12px;
+      text-align: center;
+      display: block;
+      margin-top: 4px;
+    }
+  }
+}
+
+@media(max-width: 540px) {
+}

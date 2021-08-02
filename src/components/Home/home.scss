@@ -1,0 +1,21 @@
+.wrapper {
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .title-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .description {
+    margin: 0;
+    color: black;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    width: 60%;
+    font-weight: 500;
+  }
+  .btn-group {
+    margin-top: 40px;
+  }
+}

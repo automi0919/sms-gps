@@ -1,0 +1,125 @@
+input {
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 300px;
+  height: 50px;
+  width: 100%;
+  transition: all .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+input:hover {
+
+}
+::placeholder {
+  color: var(--primary-color);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--primary-color);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--primary-color);
+}
+
+.input-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+.input-outline:focus {
+  border-color: var(--primary-dark-color);
+}
+
+.input-outline:hover {
+  color: var(--primary-dark-color);
+}
+
+// $primary: var(--primary-color);
+// $dark: var(--primary-dark-color);
+
+  
+// * {
+//   box-sizing: border-box
+// }
+  
+// .inp {
+//   position: relative;
+//   margin: auto;
+//   width: 100%;
+//   overflow: hidden;
+
+//   .label {
+//     position: absolute;
+//     top: 20px;
+//     left: 12px;
+//     font-size: 16px;
+//     color: rgba($dark,.5);
+//     font-weight: 500;
+//     transform-origin: 0 0;
+//     transform: translate3d(0,0,0);
+//     transition: all .2s ease;
+//     pointer-events: none;
+//   }
+//   .focus-bg {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: rgba($dark,.05);
+//     z-index: -1;
+//     transform: scaleX(0);
+//     transform-origin: left;
+//   }
+//   input {
+//     -webkit-appearance: none;
+//     appearance: none;
+//     width: 100%;
+//     padding: 16px 12px 0 12px;
+//     height: 50px;
+//     font-size: 14px;
+//     font-weight: 400;
+//     background: rgba($dark,.02);
+//     box-shadow: inset 0 -1px 0 rgba($dark,.3);
+//     color: $dark;
+//     transition: all .15s ease;
+
+//     &:hover {
+//       background: rgba($dark,.04);
+//       box-shadow: inset 0 -1px 0 rgba($dark,.5);
+//     }
+//     &:not(:placeholder-shown) {
+//       + .label {
+//         color: rgba($dark,.5);
+//         transform: translate3d(0,-12px,0) scale(.75);
+//       }
+//     }
+    
+//     &:focus {
+//       background: rgba($dark,.05);
+//       outline: none;
+//       box-shadow: inset 0 -2px 0 $primary;
+//       + .label {
+//         color: $primary;
+//         transform: translate3d(0,-12px,0) scale(.75);
+//         + .focus-bg {
+//           transform: scaleX(1);
+//           transition: all .1s ease;
+//         }
+//       }
+//     }
+//   }
+// }

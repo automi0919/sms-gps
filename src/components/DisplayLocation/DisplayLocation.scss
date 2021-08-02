@@ -1,0 +1,24 @@
+.display-container {
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    span {
+      font-weight: 600;
+      font-family: 'Segoe UI';
+    }
+    .info-title {
+      text-transform: uppercase;
+      display: block;
+      text-align: center;
+      font-size: 13px;
+    }
+    .info-detail {
+      font-size: 12px;
+      text-align: center;
+      display: inline-block;
+      margin-top: 4px;
+    }
+  }
+}

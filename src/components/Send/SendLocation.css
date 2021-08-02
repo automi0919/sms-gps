@@ -1,0 +1,29 @@
+.container {
+  margin-top: 39px;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.container .btn-wrapper {
+  margin: 45px auto 20px auto;
+}
+
+@media (max-width: 540px) {
+  .container {
+    margin-top: 5px;
+  }
+  .btn-wrapper {
+    margin: 20px auto;
+  }
+}
+/*# sourceMappingURL=SendLocation.css.map */

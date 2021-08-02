@@ -1,0 +1,28 @@
+.wrapper {
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrapper .title-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .description {
+  margin: 0;
+  color: black;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  width: 60%;
+  font-weight: 500;
+}
+
+.wrapper .btn-group {
+  margin-top: 40px;
+}
+/*# sourceMappingURL=home.css.map */

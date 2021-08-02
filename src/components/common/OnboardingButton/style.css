@@ -1,0 +1,39 @@
+.btn {
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 300px;
+  height: 50px;
+  width: 100%;
+  transition: all .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.btn-fill {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+.btn-outline {
+  background-color: white;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-fill:hover {
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}

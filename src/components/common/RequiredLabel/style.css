@@ -1,0 +1,12 @@
+.required {
+  color:black;
+  width:fit-content;
+  position: relative;
+}
+.required::after {
+  content: '*';
+  position: absolute;
+  right: -10px;
+  top: 0;
+  color:black;
+}

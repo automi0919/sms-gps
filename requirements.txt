@@ -1,0 +1,41 @@
+from: '+19293343323',
+ to: '+61435210212 ',
+
+when user click back button on pending page, which should open?
+So if you click the gps - back to home screen
+
+So if you click the gps location it copies the google map to clipboard
+When to click what3words it copies to clipboard
+When you click open Google maps it opens the Google maps in new browser tab
+When you click share it opens the phones sharing options
+
+Open home screen and tap REQUEST GPS LOCATATION
+Opens the form page - add your mobile and other mobile with name and message
+The pending screen opens
+And SMS is sent to the receiver and they click the link, it opens the pending page and when they click the button to allow the phone to use the gps location it opens the location screen with their location
+H
+At the same time and sms is sent to both the requestrr and receiver of the GPS location and a link to the location screen (which will show the requests location)
+
+
+Crazydomains.com.au
+Hughmcampbell
+nicK00!!
+H
+Domain and hosting: safelocate.io
+
+
+
+https://www.crazydomains.com.au/help/how-to-configure-ssh-key-on-cpanel/
+https://www.crazydomains.com.au/help/how-to-connect-to-ssh-on-cpanel-using-ssh-keys/
+
+CONNECTED TO: safelocate.io
+USERNAME: safeloca
+PASSWORD: !F^$P(&K@x]72E[RNTa4
+
+FTP – File Upload
+
+FTP USERNAME: safeloca
+FTP PASSWORD: !F^$P(&K@x]72E[RNTa4
+FTP ADDRESS: ftp.safelocate.io or 122.201.64.137
+Be sure to upload all files to the public_html directory.
+LOGIN NOW

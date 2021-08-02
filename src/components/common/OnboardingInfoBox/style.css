@@ -1,0 +1,13 @@
+.info-outline {
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-align: center;
+  height: fit-content;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.info-outline:active {
+  background: var(--second-color);
+}

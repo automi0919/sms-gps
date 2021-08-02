@@ -1,0 +1,122 @@
+html,
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: calc(50% - 340px);
+  left: 30px;
+  width: 400px;
+  height: 680px;
+  background: #FFFFFF;
+  box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  border-radius: 20px;
+  overflow: hidden;
+  * {
+    width: 100%;
+    text-decoration: none;
+  }
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .copyright-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 14px;
+    line-height: 19px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span, a {
+      color: white;
+      text-align: center;
+      display: inline-block;
+      line-height: 25px;
+      font-size: 11px;
+    }
+    a {
+      text-decoration: underline;
+    }
+    position: absolute;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 50%;
+    bottom: -78px;
+    background-color: var(--primary-color);
+    cursor:pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid transparent;
+    &:hover {
+      background: white;
+      span, a {
+        color: var(--primary-color)
+      }
+      border-color: var(--primary-color);
+    }
+  }
+  .back-icon {
+    position: absolute;
+    left: 48px;
+    top: 36px;
+    width: fit-content;
+    cursor: pointer;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  img {
+    width: 170px;
+    height: auto;
+    background-size: cover;
+  }
+}
+
+.d-flex {
+  display: flex;
+  padding: 0;
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-15 {
+  gap: 15px;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+@media(max-width: 540px) {
+  .panel {
+    width: 90%;
+    height: 95%;
+    position: relative;
+    margin: auto;
+    top:0;
+    left: 0;
+    padding: 15px;
+    .back-icon {
+      left: 18px;
+      top: 18px;
+    }
+  }
+}

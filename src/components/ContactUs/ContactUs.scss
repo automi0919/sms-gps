@@ -1,0 +1,31 @@
+.container {
+  margin-top: 0;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  
+  .btn-wrapper {
+    margin: 45px auto 20px auto;
+  }
+  .title-wrapper {
+    .description {
+      margin: 0 auto 20px auto;
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 20px ;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media(max-width: 540px) {
+  .container {
+    margin-top: 5px;
+  }
+  .btn-wrapper {
+    margin: 20px auto;
+  }
+}

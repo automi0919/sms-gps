@@ -1,0 +1,21 @@
+.approval-container {
+  text-align: center;
+  color: var(--primary-color);
+  font-family: 'Segoe UI';
+  width: 76%;
+  margin-top: 50px;
+}
+
+.approval-container p {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.approval-container img {
+  width: 45px;
+  height: auto;
+}
+/*# sourceMappingURL=Pending.css.map */

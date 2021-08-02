@@ -1,0 +1,35 @@
+.display-container .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.display-container .info span {
+  font-weight: 600;
+  font-family: 'Segoe UI';
+}
+
+.display-container .info .info-title {
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  font-size: 13px;
+}
+
+.display-container .info .info-detail {
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+  margin-top: 4px;
+}
+/*# sourceMappingURL=DisplayLocation.css.map */
