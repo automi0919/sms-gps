@@ -5,6 +5,11 @@ const wss = new WebSocket.Server({ port: config.SOCKET_PORT })
 var clients = [];
 wss.on('connection', (ws) => {
 
+  console.log(
+    'socket server listening on %d',
+    config.SOCKET_PORT,
+  )
+
   ws.on('message', (msg) => {
     let msgObj = JSON.parse(msg); 
     if (msgObj.init) {

@@ -6,6 +6,7 @@ module.exports = {
   ...dotenv,
   ENV: env,
   APP_PORT: process.env.PORT || dotenv.APP_PORT,
+  SOCKET_PORT: process.env.SOCKET_PORT || dotenv.SOCKET_PORT,
   username: database_setting.dev.user,
   password: database_setting.dev.password,
   database: database_setting.dev.database,
