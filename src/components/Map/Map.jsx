@@ -182,7 +182,20 @@ const createMapOptions = () => {
     ],
   }
 }
-const Map = ({ location, zoomLevel, children }) => (
+const renderMarkers = (map, maps, points) => {
+  let markers = [];
+  for(let pos of points) {
+    let marker = new maps.Marker({
+      position: { lat: pos.lat, lng: pos.lng },
+      map,
+      title: 'Hello World!',
+    });
+    markers.push(marker);
+  }
+  return markers;
+ };
+
+const Map = ({ location, zoomLevel, points }) => (
   <Wrapper>
     <div className='google-map'>
       <GoogleMapReact
@@ -190,8 +203,9 @@ const Map = ({ location, zoomLevel, children }) => (
         center={location}
         zoom={zoomLevel}
         options={createMapOptions}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, points)}
       >
-        {children}
       </GoogleMapReact>
     </div>
   </Wrapper>

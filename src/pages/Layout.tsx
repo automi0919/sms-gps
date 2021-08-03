@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import Map from '../components/Map/Map';
 import { currentGeoLocation } from '../store/sms/reducer';
 import './style.css';
-const Marker = (props: MarkerPropTypes) => <div><img src="/assets/images/marker.svg" srcSet="" alt={props.text} /></div>
 
 const Layout  = (props:PropsType) => {
   const markPos = useSelector(state => currentGeoLocation(state));
@@ -10,18 +9,7 @@ const Layout  = (props:PropsType) => {
   return (
     <div className="layout-container">
       <div className="map-wrapper">
-        <Map location={markPos} zoomLevel={17}>
-          {markPosArray.map((markPos, index) => {
-            return (
-              <Marker
-                lat={markPos?.lat}
-                lng={markPos?.lng}
-                text={"Marker"}
-                key={index}
-              />
-            )
-          })}
-        </Map>
+        <Map location={markPos} zoomLevel={14} points={markPosArray}/>
       </div>
       {props.children}
     </div>
