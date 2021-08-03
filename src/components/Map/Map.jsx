@@ -182,9 +182,8 @@ const createMapOptions = () => {
     ],
   }
 }
-const Marker = ({ pos }) => <div style={greatPlaceStyle}><img src='/assets/images/map_marker.svg' alt="Marker"/></div>
+const Marker = ({ pos }) => <div><img src='/assets/images/map_marker.svg' alt="Marker"/></div>
 
-const renderMarkers = (point) => {}
 const greatPlaceStyle = {
   position: 'absolute',
   transform: 'translate(-50%, -50%)',
