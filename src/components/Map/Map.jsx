@@ -13,7 +13,7 @@ const Map = ({ location, zoomLevel, children}) => (
   <Wrapper>
     <div className="google-map">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k' }}
+        bootstrapURLKeys={{ key: 'AIzaSyAT9aAJOYEulWIFp5CxWpkn6I2grg8mH24' }}
         center={location}
         zoom={zoomLevel}
       >
