@@ -10,7 +10,7 @@ const Layout  = (props:PropsType) => {
   return (
     <div className="layout-container">
       <div className="map-wrapper">
-        <Map location={markPos} zoomLevel={3}>
+        <Map location={markPos} zoomLevel={17}>
           {markPosArray.map((markPos, index) => {
             return (
               <Marker
