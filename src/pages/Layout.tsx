@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import Map from '../components/Map/Map';
 import { currentGeoLocation } from '../store/sms/reducer';
 import './style.css';
-const Marker = (props: MarkerPropTypes) => <div><img src="./marker.svg" srcSet="" alt={props.text} /></div>
+const Marker = (props: MarkerPropTypes) => <div><img src="%PUBLIC_URL%/assets/images/marker.svg" alt={props.text} /></div>
 
 const Layout  = (props:PropsType) => {
   const markPos = useSelector(state => currentGeoLocation(state));
