@@ -186,7 +186,7 @@ const renderMarkers = (map, maps, points) => {
   let markers = [];
   for(let pos of points) {
     let marker = new maps.Marker({
-      position: { lat: pos.lat, lng: pos.lng },
+      position: { lat: typeof pos.lat === 'number' ? pos.lat : parseFloat(pos.lat), lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng) },
       map,
       title: 'Hello World!',
     });
