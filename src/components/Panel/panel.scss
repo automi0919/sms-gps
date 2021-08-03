@@ -25,6 +25,7 @@ html,
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
   }
   .copyright-wrapper {
     width: 150px;
@@ -107,16 +108,20 @@ html,
 
 @media(max-width: 540px) {
   .panel {
-    width: 90%;
+    width: 95%;
     height: 95%;
     position: relative;
     margin: auto;
     top:0;
     left: 0;
-    padding: 15px;
+    padding: 8px;
     .back-icon {
       left: 18px;
       top: 18px;
     }
   }
+}
+
+.privacy-link {
+  text-decoration: underline;
 }

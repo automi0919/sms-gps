@@ -44,11 +44,8 @@ const App = (props: any) => {
   const location = useLocation();
   const routingComponent = (
     <Layout>
-      <AnimatedSwitch
-        atEnter={{ opacity: 0 }}
-        atLeave={{ opacity: 0 }}
-        atActive={{ opacity: 1 }}
-        className="switch-wrapper"
+      <Switch
+     
         location={location}
       >
         {routes.map((route: any, index: any) => {
@@ -61,7 +58,7 @@ const App = (props: any) => {
             />
           )
         })}
-      </AnimatedSwitch>
+      </Switch>
     </Layout>
   )
 

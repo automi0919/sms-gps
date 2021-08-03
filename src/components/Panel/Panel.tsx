@@ -14,7 +14,7 @@ const Panel = (props: PropsType) => {
         {props.children}
       </div>
       {location.pathname !== '/privacy' && <Link className="copyright-wrapper" to='/privacy'>
-        <a>Privacy Policy</a>
+        <span className="privacy-link">Privacy Policy</span>
         <span>COPYRIGHT 2021</span>
       </Link>}
       {

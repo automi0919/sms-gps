@@ -43,6 +43,7 @@ html,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 50px;
 }
 
 .panel .copyright-wrapper {
@@ -152,17 +153,21 @@ html,
 
 @media (max-width: 540px) {
   .panel {
-    width: 90%;
+    width: 95%;
     height: 95%;
     position: relative;
     margin: auto;
     top: 0;
     left: 0;
-    padding: 15px;
+    padding: 8px;
   }
   .panel .back-icon {
     left: 18px;
     top: 18px;
   }
+}
+
+.privacy-link {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=panel.css.map */

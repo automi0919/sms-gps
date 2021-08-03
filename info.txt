@@ -1,0 +1,13 @@
+nicK00!!n
+
+hughmcampbell@gmail.com
+nicK00!!
+
+
+NODE_USER=nodejs
+NODE_USER_PASSWORD=9950e3c8d682f822762edcd33a2f3268
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+
+sudo certbot --nginx -d safelocate.io -d www.safelocate.io
