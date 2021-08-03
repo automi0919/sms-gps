@@ -1,6 +1,4 @@
-// var socket_server = process.env.REACT_APP_SOCKET_SERVER_URL
-var socket_server = 'ws://localhost:8081/';
-console.log('socket server url: ', socket_server);
+var socket_server = process.env.REACT_APP_SOCKET_SERVER_URL
 var smsSocket = null;
 
 function getSocket() {
