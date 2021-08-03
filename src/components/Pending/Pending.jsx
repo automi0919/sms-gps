@@ -6,7 +6,7 @@ function Pending(props) {
     <Panel>
       <div className='approval-container'>
         <p>GPS location pending approval..</p>
-        <img src='%PUBLIC_URL%/assets/images/logo.svg' alt='Pending...' />
+        <img src='./logo.svg' alt='Pending...' />
         <p>
           THIS SCREEN WILL AUTOMATICALLY UPDATE WHEN YOUR SMS REQUEST IS OPENED
           AND ACCEPTED
