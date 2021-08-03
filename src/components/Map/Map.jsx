@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import GoogleMapReact from 'google-map-react'
 
@@ -182,32 +182,37 @@ const createMapOptions = () => {
     ],
   }
 }
-const renderMarkers = (map, maps, points) => {
-  let markers = [];
-  for(let pos of points) {
-    let marker = new maps.Marker({
-      position: { lat: typeof pos.lat === 'number' ? pos.lat : parseFloat(pos.lat), lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng) },
-      map,
-      title: 'Hello World!',
-    });
-    markers.push(marker);
-  }
-  return markers;
- };
+const Marker = ({ pos }) => <div style={greatPlaceStyle}><img src='/assets/images/map_marker.svg' alt="Marker"/></div>
 
-const Map = ({ location, zoomLevel, points }) => (
-  <Wrapper>
-    <div className='google-map'>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k' }}
-        center={location}
-        zoom={zoomLevel}
-        options={createMapOptions}
-        yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, points)}
-      >
-      </GoogleMapReact>
-    </div>
-  </Wrapper>
-)
+const renderMarkers = (point) => {}
+const greatPlaceStyle = {
+  position: 'absolute',
+  transform: 'translate(-50%, -50%)',
+}
+
+const Map = ({ location, zoomLevel, points }) => {
+  const [map, setmap] = useState(null)
+  const [maps, setmaps] = useState(null)
+  return (
+    <Wrapper>
+      <div className='google-map'>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k' }}
+          center={location}
+          zoom={zoomLevel}
+          options={createMapOptions}
+          yesIWantToUseGoogleMapApiInternals
+        >
+          {points.map((pos, index) => {
+            let position = {
+              lat: typeof pos.lat === 'number' ? pos.lat : parseFloat(pos.lat),
+              lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
+            }
+            return <Marker key={index} pos={position} />
+          })}
+        </GoogleMapReact>
+      </div>
+    </Wrapper>
+  )
+}
 export default Map
