@@ -1,6 +1,7 @@
 const WebSocket = require('ws')
 const {v4: uuid4} = require('uuid');
-const wss = new WebSocket.Server({ port: 8081 })
+const config = require('../config');
+const wss = new WebSocket.Server({ port: config.SOCKET_PORT })
 var clients = [];
 wss.on('connection', (ws) => {
 
