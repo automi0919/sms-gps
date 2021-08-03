@@ -3,12 +3,13 @@ const {v4: uuid4} = require('uuid');
 const config = require('../config');
 const wss = new WebSocket.Server({ port: config.SOCKET_PORT })
 var clients = [];
-wss.on('connection', (ws) => {
 
-  console.log(
-    'socket server listening on %d',
-    config.SOCKET_PORT,
-  )
+console.log(
+  'socket server listening on %d',
+  config.SOCKET_PORT,
+)
+
+wss.on('connection', (ws) => {
 
   ws.on('message', (msg) => {
     let msgObj = JSON.parse(msg); 
