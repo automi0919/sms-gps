@@ -8,6 +8,7 @@
   scrollbar-width: none;
   /* Firefox */
   text-align: justify;
+  font-size: 14px;
 }
 
 .privacy-container ::-webkit-scrollbar {

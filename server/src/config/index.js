@@ -12,5 +12,6 @@ module.exports = {
   database: database_setting.dev.database,
   host: database_setting.dev.host,
   dialect: database_setting.dev.driver,
+  TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER,
   logging: true,
 }

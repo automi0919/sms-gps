@@ -74,4 +74,14 @@ input {
 .input-outline:hover {
   color: var(--primary-dark-color);
 }
+
+@media (max-width: 540px) {
+  input {
+    width: 95%;
+    height: 40px;
+    padding: 12px;
+    margin: 0 auto 10px auto;
+    font-size: 12px;
+  }
+}
 /*# sourceMappingURL=style.css.map */

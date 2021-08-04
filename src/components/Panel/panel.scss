@@ -12,7 +12,7 @@ html,
   left: 30px;
   width: 400px;
   height: 680px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.1);
   padding: 50px;
   border-radius: 20px;
@@ -38,7 +38,8 @@ html,
     display: flex;
     flex-direction: column;
     align-items: center;
-    span, a {
+    span,
+    a {
       color: white;
       text-align: center;
       display: inline-block;
@@ -54,13 +55,14 @@ html,
     border-radius: 50%;
     bottom: -78px;
     background-color: var(--primary-color);
-    cursor:pointer;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
     border: 1px solid transparent;
     &:hover {
       background: white;
-      span, a {
-        color: var(--primary-color)
+      span,
+      a {
+        color: var(--primary-color);
       }
       border-color: var(--primary-color);
     }
@@ -106,18 +108,40 @@ html,
   width: 50%;
 }
 
-@media(max-width: 540px) {
+@media (max-width: 540px) {
   .panel {
     width: 95%;
     height: 95%;
     position: relative;
     margin: auto;
-    top:0;
+    top: 0;
     left: 0;
-    padding: 8px;
+    padding: 22px;
     .back-icon {
       left: 18px;
       top: 18px;
+    }
+    .logo {
+      img {
+        width: 140px;
+      }
+    }
+    .copyright-wrapper {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 12px;
+      line-height: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 50%;
+      bottom: -70px;
     }
   }
 }

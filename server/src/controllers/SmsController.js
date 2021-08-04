@@ -2,8 +2,8 @@
 const LocationRequest = require('../models/request.model');
 const Tickets = require('../models/tickets.model');
 const wss = require('../services/socketServer');
-
-async function sendRequest(req, res) {
+const TWILIO_NUMBER = require('../config').TWILIO_PHONE_NUMBER;
+async function sendRequest(req, res, next) {
   try {
     const from = req.body.from;
     const to = req.body.to;
@@ -17,23 +17,25 @@ async function sendRequest(req, res) {
     } else {
       LocationRequest.create(new_request, async function (err, new_id) {
         if (err)
-          res.json({
+          res.send({
             success: false
           });
-
+        console.log('TwilioNumber: ', TWILIO_NUMBER);
         var siteUrl = req.protocol + '://' + req.get('host');
         var linkUrl = `${siteUrl}/display?id=${new_id}`;
         console.log('linkUrl: ', linkUrl);
 
         var msgTemplate = getMessageBody(name, msg, linkUrl);
         try {
-          var result = await sendTwilioSMS(from, to, msgTemplate);
-          res.json({
+          var result = await sendTwilioSMS(TWILIO_NUMBER, to, msgTemplate);
+          res.send({
             success: result,
             data: msg
           });
         } catch (e) {
-          res.json({
+          console.log('twilio error: ', e);
+          next(e)
+          res.send({
             success: false
           })
         }
@@ -41,14 +43,15 @@ async function sendRequest(req, res) {
     }
   } catch (e) {
     console.log(e);
-    res.json({
+    next(e)
+    res.send({
       success: false,
       error: "Unknown"
     });
   }
 }
 
-async function sendShareRequest(req, res) {
+async function sendShareRequest(req, res, next) {
   try {
     const from = req.body.from;
     const to = req.body.to;
@@ -59,42 +62,62 @@ async function sendShareRequest(req, res) {
     var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}`;
 
     var msgTemplate = getShareMessageBody(from, linkUrl);
-    var result = await sendTwilioSMS(from, to, msgTemplate);
+    var result = await sendTwilioSMS(TWILIO_NUMBER, to, msgTemplate);
     console.log('send-my-pos', msgTemplate)
     console.log('send-my-pos', result)
-    res.json({
+    res.send({
       success: result,
     })
   } catch (e) {
     console.log(e);
-    res.json({
+    next(e)
+    res.send({
       success: false,
       error: "Unknown"
     });
   }
 }
 
-async function sendLocation(req, res) {
+async function sendLocation(req, res, next) {
   try {
     const pos = req.body.pos;
     const record_id = req.body.id;
 
-    await LocationRequest.findById(record_id, (err, result) => {
+    await LocationRequest.findById(record_id, async (err, result) => {
       if (!result) return;
       let socketID = result.socketID;
+      let from = result.from_number
+      let to = result.to_number
       pos.type = 'UPDATE_POS';
       console.log(pos)
       wss.sendToRequester(socketID, pos);
-      return result.socketID;
+
+      var siteUrl = req.protocol + '://' + req.get('host');
+      var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}`;
+
+      var msgTemplate = getShareMessageBody(to, linkUrl);
+      try {
+        var success = await sendTwilioSMS(TWILIO_NUMBER, from, msgTemplate);
+        res.send({
+          success,
+          data: msgTemplate
+        });
+      } catch (e) {
+        next(e);
+        res.send({
+          success: false
+        })
+      }
     });
 
-    res.json({
+    res.send({
       success: true,
       data: pos
     });
   } catch (e) {
     console.log(e);
-    res.json({
+    next(e);
+    res.send({
       success: false,
       data: e
     })
@@ -107,14 +130,24 @@ const sendTwilioSMS = async (from, to, msg) => {
     process.env.TWILIO_AUTH_TOKEN
   );
   try {
+    if (to) {
+      to = to.replace(/\+/g, '');
+      to = '+' + to;
+    } else {
+      return false;
+    }
+    if (from) {
+      from = from.replace(/\+/g, '');
+      from = '+' + from;
+    } else {
+      return false;
+    }
     console.log('from: ', from)
     console.log('to: ', to)
     let result = await client.messages.create({
       from: from,
       to: to,
-      // from: '+19 293 343323',
-      // to: '+61435210212 ',
-      body: msg
+      body: msg 
     }).then((message) => {
       return true;
     });
@@ -129,29 +162,28 @@ const sendTwilioSMS = async (from, to, msg) => {
 
 const getMessageBody = (name, msg, linkUrl) => {
   return (
-    `Your GPS location has been requested by ${name} \n 
-     ${msg} \n
-    To share your location click the link below: ${linkUrl}`
+    `Your SAFE LOCATE GPS location has been requested by ${name}
+     ${msg}
+    ${linkUrl}`
   );
 }
 
 const getShareMessageBody = (from, linkUrl) => {
 
   return (
-    `${from} shared their location. \n
-    -View location link: ${linkUrl} \n
-   `
+    `${from} shared their location.
+    View location link: ${linkUrl}`
   );
 }
 
-const sendContactUs = (req, res) => {
+const sendContactUs = (req, res, next) => {
   try {
     const new_request = new Tickets(req.body);
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
       res.status(400).send({ success: false, error: true, message: 'Please provide all required field' });
     } else {
       Tickets.create(new_request, async function (err, new_id) {
-        res.json({
+        res.send({
           success: err ? false : true,
           error: err
         });
@@ -159,7 +191,8 @@ const sendContactUs = (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.json({
+    next(e);
+    res.send({
       success: false,
       error: "Unknown"
     });

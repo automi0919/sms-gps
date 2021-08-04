@@ -184,20 +184,19 @@ const createMapOptions = () => {
 }
 const Marker = ({ pos }) => <div><img src='/assets/images/map_marker.svg' alt="Marker"/></div>
 
-const greatPlaceStyle = {
-  position: 'absolute',
-  transform: 'translate(-50%, -50%)',
-}
-
 const Map = ({ location, zoomLevel, points }) => {
   const [map, setmap] = useState(null)
   const [maps, setmaps] = useState(null)
+  let center = {
+    lat: typeof location.lat === 'number' ? location.lat : parseFloat(location.lat),
+    lng: typeof location.lng === 'number' ? location.lng : parseFloat(location.lng),
+  }
   return (
     <Wrapper>
       <div className='google-map'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k' }}
-          center={location}
+          bootstrapURLKeys={{ key: process.env.REACT_API_GOOGLE_API_KEY }}
+          center={center}
           zoom={zoomLevel}
           options={createMapOptions}
           yesIWantToUseGoogleMapApiInternals
@@ -207,7 +206,9 @@ const Map = ({ location, zoomLevel, points }) => {
               lat: typeof pos.lat === 'number' ? pos.lat : parseFloat(pos.lat),
               lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
             }
-            return <Marker key={index} pos={position} />
+            if (position.lat && position.lng) {
+              return <Marker key={index} {...position} />
+            } 
           })}
         </GoogleMapReact>
       </div>

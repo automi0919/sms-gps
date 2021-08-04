@@ -2,7 +2,7 @@ import { types, REQUEST_STATE, CONTACT_US_STATE } from './actions'
 
 const initialState = {
   position: {},
-  current_geolocation: {lat: 37, lng: 64},
+  current_geolocation: {},
   request_state: REQUEST_STATE.NOTSEND,
   requested_data: {},
   approved_data: {},

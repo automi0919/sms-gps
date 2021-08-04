@@ -11,3 +11,10 @@
 .info-outline:active {
   background: var(--second-color);
 }
+
+@media(max-width: 540px) {
+  .info-outline {
+    margin-bottom: 10px;
+    font-size: ;
+  }
+}

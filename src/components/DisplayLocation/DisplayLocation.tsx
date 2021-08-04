@@ -4,7 +4,7 @@ import { approvedData, currentGeoLocation, getRequestState } from '../../store/s
 import Panel from '../Panel/Panel';
 import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox';
 import OnboardingButton from '../common/OnboardingButton/OnboardingButton';
-import { getCurrentGeoLocation, REQUEST_STATE, sendLocation } from '../../store/sms/actions';
+import { getCurrentGeoLocation, REQUEST_STATE, sendLocation, setApprovedPos } from '../../store/sms/actions';
 import { useEffect } from 'react';
 
 function DisplayLocation(props: any) {
@@ -25,6 +25,9 @@ function DisplayLocation(props: any) {
   const pos = id ? currentPos : (lat || lng) ? sharedPos : approvedPos;
   useEffect(() => {
     dispatch(getCurrentGeoLocation());
+    if (sharedPos.lat) {
+      dispatch(setApprovedPos(sharedPos))
+    }
     if (id) {
       props.handleNotification('info', 'Your position has been sent!');
     } else {
@@ -38,7 +41,7 @@ function DisplayLocation(props: any) {
     }
   }, []);
 
-  if (id) {
+  if (id && pos.lat) {
     dispatch(sendLocation(pos, id));
   }
 

@@ -48,4 +48,19 @@
   display: block;
   margin-top: 4px;
 }
+
+@media (max-width: 540px) {
+  .my-container .info span {
+    font-weight: 500;
+  }
+  .my-container .info .info-title {
+    font-size: 11px;
+  }
+  .my-container .info .info-detail {
+    font-size: 10px;
+  }
+  .my-container .btn-wrapper {
+    margin: 10px auto;
+  }
+}
 /*# sourceMappingURL=SendMyLocation.css.map */

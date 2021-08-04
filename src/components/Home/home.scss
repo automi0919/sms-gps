@@ -19,3 +19,11 @@
     margin-top: 10px;
   }
 }
+
+@media(max-width: 540px) {
+  .wrapper {
+    .description {
+      font-size: 12px;
+    }
+  }
+}
