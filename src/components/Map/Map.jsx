@@ -195,7 +195,7 @@ const Map = ({ location, zoomLevel, points }) => {
     <Wrapper>
       <div className='google-map'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.REACT_API_GOOGLE_API_KEY }}
+          bootstrapURLKeys={{ key: "AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k" }}
           center={center}
           zoom={zoomLevel}
           options={createMapOptions}
