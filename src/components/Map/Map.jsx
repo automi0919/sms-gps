@@ -182,7 +182,7 @@ const createMapOptions = () => {
     ],
   }
 }
-const Marker = ({ pos }) => <div ><img src='/assets/images/map_marker.svg' alt="Marker" className="map-marker"/></div>
+const Marker = ({ pos }) => <img src='/assets/images/map_marker.svg' alt="Marker" className="map-marker"/>
 
 const Map = ({ location, zoomLevel, points }) => {
   const [map, setmap] = useState(null)
@@ -207,7 +207,7 @@ const Map = ({ location, zoomLevel, points }) => {
               lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
             }
             if (position.lat && position.lng) {
-              return <Marker key={index} {...position} />
+              return <Marker key={index} {...position} position="top-right" />
             } 
           })}
         </GoogleMapReact>
