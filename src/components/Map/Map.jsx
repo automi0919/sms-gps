@@ -207,7 +207,7 @@ const Map = ({ location, zoomLevel, points }) => {
               lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
             }
             if (position.lat && position.lng) {
-              return <Marker key={index} {...position} position="top-right" />
+              return <Marker key={index} {...position}  />
             } 
           })}
         </GoogleMapReact>
