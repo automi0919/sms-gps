@@ -10,9 +10,9 @@ const Panel = (props: PropsType) => {
       <div className='logo'>
         <Link to="/">
           <img src='/assets/images/logo.png' alt='Logo' srcSet='' />
-          <h2 className="logo-title">safe locate</h2>
-          <label className="logo-description">sms your gps</label>
         </Link>
+        <h2 className="logo-title">safe locate</h2>
+        <label className="logo-description">sms your gps</label>
       </div>
       <div className="content-wrapper">
         {props.children}
