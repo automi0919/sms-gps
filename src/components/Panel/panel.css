@@ -121,8 +121,26 @@ html,
   text-align: center;
 }
 
+.logo .logo-title {
+  font-size: 22px;
+  font-weight: bolder;
+  color: black;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+.logo .logo-description {
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  margin: 0 auto;
+  display: inline-block;
+  margin: 0 auto 20px auto;
+  text-transform: uppercase;
+}
+
 .logo img {
-  width: 170px;
+  width: 100px;
   height: auto;
   background-size: cover;
 }
@@ -168,7 +186,23 @@ html,
     top: 18px;
   }
   .panel .logo img {
-    width: 140px;
+    width: 80px;
+  }
+  .panel .logo .logo-title {
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+    margin: 0 auto;
+    text-transform: uppercase;
+  }
+  .panel .logo .logo-description {
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+    margin: 0 auto;
+    display: inline-block;
+    margin: 0 auto 10px auto;
+    text-transform: uppercase;
   }
   .panel .copyright-wrapper {
     width: 130px;

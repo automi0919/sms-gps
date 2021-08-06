@@ -8,7 +8,11 @@ const Panel = (props: PropsType) => {
   return (
     <div className='panel'>
       <div className='logo'>
-        <Link to="/"><img src='/assets/images/logo.png' alt='Logo' srcSet='' /></Link>
+        <Link to="/">
+          <img src='/assets/images/logo.png' alt='Logo' srcSet='' />
+          <h2 className="logo-title">safe locate</h2>
+          <label className="logo-description">sms your gps</label>
+        </Link>
       </div>
       <div className="content-wrapper">
         {props.children}

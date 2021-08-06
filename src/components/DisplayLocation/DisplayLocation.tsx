@@ -98,14 +98,14 @@ function DisplayLocation(props: any) {
       <div className='display-container'>
         <OnboardingInfoBox onClick={copyGeoPos}>
           <div className="info">
-            <span className="info-title">GPS LOCATION - TAB TO COPY</span>
+            <span className="info-title">GPS LOCATION - TAP TO COPY</span>
             <span className='info-detail'>{pos.lng}</span>
             <span className='info-detail'>{pos.lat}</span>
           </div>
         </OnboardingInfoBox>
         <OnboardingInfoBox onClick={copyWhat3words}>
           <div className="info">
-            <span className="info-title">WHAT3WORDS LOCATION - TAB TO COPY</span>
+            <span className="info-title">WHAT3WORDS LOCATION - TAP TO COPY</span>
             <span className='info-detail'>{'///' + pos.what3words}</span>
           </div>
         </OnboardingInfoBox>

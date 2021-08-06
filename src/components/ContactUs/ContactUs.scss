@@ -1,4 +1,4 @@
-.container {
+.contactus-container {
   margin-top: 0;
   text-align: left;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,10 +22,11 @@
 }
 
 @media(max-width: 540px) {
-  .container {
+  .contactus-container {
     margin-top: 5px;
+    .btn-wrapper {
+      margin: 20px auto;
+    }
   }
-  .btn-wrapper {
-    margin: 20px auto;
-  }
+  
 }

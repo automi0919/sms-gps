@@ -55,13 +55,15 @@ function SendLocation(props) {
             value={from}
             onChange={setFromNumber}
             required={true}
+            mask="+6\1 999 999 999"
           />
           <OnboardingTextInput
             type='text'
-            placeholder="RECEIVER's MOBILE NUMBER*"
+            placeholder="RECEIVER'S MOBILE NUMBER*"
             value={to}
             onChange={setToNumber}
             required={true}
+            mask="+6\1 999 999 999"
           />
           <OnboardingTextInput
             type='text'

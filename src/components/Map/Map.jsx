@@ -182,7 +182,7 @@ const createMapOptions = () => {
     ],
   }
 }
-const Marker = ({ pos }) => <div><img src='/assets/images/map_marker.svg' alt="Marker"/></div>
+const Marker = ({ pos }) => <div ><img src='/assets/images/map_marker.svg' alt="Marker" className="map-marker"/></div>
 
 const Map = ({ location, zoomLevel, points }) => {
   const [map, setmap] = useState(null)

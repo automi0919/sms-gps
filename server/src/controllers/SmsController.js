@@ -129,6 +129,7 @@ const sendTwilioSMS = async (from, to, msg) => {
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_AUTH_TOKEN
   );
+  console.log('twillio info: ', client);
   try {
     if (to) {
       to = to.replace(/\+/g, '');
@@ -144,6 +145,9 @@ const sendTwilioSMS = async (from, to, msg) => {
     }
     console.log('from: ', from)
     console.log('to: ', to)
+    client.lookups.v1.phoneNumbers(to)
+                 .fetch({type: ['carrier']})
+                 .then(phone_number => console.log(phone_number.carrier));
     let result = await client.messages.create({
       from: from,
       to: to,
@@ -154,6 +158,7 @@ const sendTwilioSMS = async (from, to, msg) => {
     console.log('result: ', result);
     return result;
   } catch (err) {
+    console.log('sms error:', err)
     return false;
   }
 
@@ -162,7 +167,7 @@ const sendTwilioSMS = async (from, to, msg) => {
 
 const getMessageBody = (name, msg, linkUrl) => {
   return (
-    `Your SAFE LOCATE GPS location has been requested by ${name}
+    `YOUR SAFE LOCATE GPS LOCATION HAS BEEN REQUESTED BY ${name}
      ${msg}
     ${linkUrl}`
   );
@@ -171,8 +176,8 @@ const getMessageBody = (name, msg, linkUrl) => {
 const getShareMessageBody = (from, linkUrl) => {
 
   return (
-    `${from} shared their location.
-    View location link: ${linkUrl}`
+    `${from} SHARED THEIR LOCATION.
+    VIEW LOCATION LINK: ${linkUrl}`
   );
 }
 

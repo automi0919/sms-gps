@@ -1,13 +1,55 @@
-input {
+@import url("https://rsms.me/inter/inter.css");
+:root {
+  --size-bezel: .5rem;
+  --size-radius: 4px;
+}
+
+.input {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
+  margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
+  background: pink;
+  white-space: nowrap;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  background: var(--color-background);
+  -webkit-transition: -webkit-transform 120ms ease-in;
+  transition: -webkit-transform 120ms ease-in;
+  transition: transform 120ms ease-in;
+  transition: transform 120ms ease-in, -webkit-transform 120ms ease-in;
+  font-weight: bold;
+  line-height: 1.2;
+  color: var(--primary-color);
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.input__field {
+  outline: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 12px;
-  font-weight: 600;
-  font-size: 14px;
   line-height: 19px;
   margin-bottom: 15px;
   padding: 15px;
-  width: 300px;
   height: 50px;
   width: 100%;
   -webkit-transition: all .3s ease;
@@ -21,67 +63,83 @@ input {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  outline: none;
   text-align: center;
   font-weight: 600;
   font-size: 16px;
+  text-align: center;
+  letter-spacing: 5px;
 }
 
-::-webkit-input-placeholder {
-  color: var(--primary-color);
-  opacity: 1;
-  /* Firefox */
+.input__field:focus::-webkit-input-placeholder {
+  color: var(--primary-light-color);
 }
 
-:-ms-input-placeholder {
-  color: var(--primary-color);
-  opacity: 1;
-  /* Firefox */
+.input__field:focus:-ms-input-placeholder {
+  color: var(--primary-light-color);
 }
 
-::-ms-input-placeholder {
-  color: var(--primary-color);
-  opacity: 1;
-  /* Firefox */
+.input__field:focus::-ms-input-placeholder {
+  color: var(--primary-light-color);
 }
 
-::placeholder {
-  color: var(--primary-color);
-  opacity: 1;
-  /* Firefox */
+.input__field:focus::placeholder {
+  color: var(--primary-light-color);
 }
 
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: var(--primary-color);
+.input__field::-webkit-input-placeholder {
+  color: transparent;
 }
 
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: var(--primary-color);
+.input__field:-ms-input-placeholder {
+  color: transparent;
 }
 
-.input-outline {
+.input__field::-ms-input-placeholder {
+  color: transparent;
+}
+
+.input__field::placeholder {
+  color: transparent;
+}
+
+.input__field.input-outline {
   background-color: transparent;
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
 }
 
-.input-outline:focus {
-  border-color: var(--primary-dark-color);
-}
-
-.input-outline:hover {
-  color: var(--primary-dark-color);
+.input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
+  -webkit-transform: translate(0.25rem, -65%) scale(0.8);
+          transform: translate(0.25rem, -65%) scale(0.8);
+  color: var(--primary-color);
+  background: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 12px;
 }
 
 @media (max-width: 540px) {
-  input {
-    width: 95%;
+  .input__field {
     height: 40px;
     padding: 12px;
     margin: 0 auto 10px auto;
     font-size: 12px;
+    letter-spacing: 3px;
+  }
+  .input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
+    -webkit-transform: translate(1rem, -65%) scale(0.8);
+            transform: translate(1rem, -65%) scale(0.8);
+    color: var(--primary-color);
+    background: white;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 10px;
+  }
+  .input__label {
+    font-size: 12px;
+    top: -3px;
   }
 }
 /*# sourceMappingURL=style.css.map */

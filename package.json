@@ -22,6 +22,7 @@
     "react": "^17.0.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.2",
+    "react-input-mask": "^2.0.4",
     "react-notifications": "^1.7.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",

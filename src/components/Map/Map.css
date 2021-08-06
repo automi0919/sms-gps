@@ -7,3 +7,7 @@
     bottom: 0;
     right: 0;
 }
+.map-marker {
+    width: 48px;
+    height: 30px; 
+}

@@ -22,7 +22,7 @@
   .container {
     margin-top: 5px;
   }
-  .btn-wrapper {
+  .container .btn-wrapper {
     margin: 20px auto;
   }
 }

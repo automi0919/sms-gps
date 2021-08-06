@@ -13,7 +13,7 @@ const Home = (props: any) => {
     <Panel>
       <div className="wrapper">
         <div className="title-wrapper">
-          <p className="description">your free emergency sms gps locator</p>
+          <p className="description">SAFE LOCATE<br/>NO APP 2 TAP GPS SMS LOCATOR</p>
         </div>
         <div className="btn-group">
           <Link to="/request"><OnboardingButton fill={true}>REQUEST SMS LOCATION</OnboardingButton></Link>

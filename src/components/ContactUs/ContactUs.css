@@ -1,4 +1,4 @@
-.container {
+.contactus-container {
   margin-top: 0;
   text-align: left;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,11 +14,11 @@
           flex: 1;
 }
 
-.container .btn-wrapper {
+.contactus-container .btn-wrapper {
   margin: 45px auto 20px auto;
 }
 
-.container .title-wrapper .description {
+.contactus-container .title-wrapper .description {
   margin: 0 auto 20px auto;
   text-align: center;
   color: var(--primary-color);
@@ -28,10 +28,10 @@
 }
 
 @media (max-width: 540px) {
-  .container {
+  .contactus-container {
     margin-top: 5px;
   }
-  .btn-wrapper {
+  .contactus-container .btn-wrapper {
     margin: 20px auto;
   }
 }

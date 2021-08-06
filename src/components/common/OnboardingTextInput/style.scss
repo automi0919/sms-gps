@@ -1,58 +1,99 @@
-input {
-  box-sizing: border-box;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
-  margin-bottom: 15px;
-  padding: 15px;
-  width: 300px;
-  height: 50px;
-  width: 100%;
-  transition: all .3s ease;
+@import url('https://rsms.me/inter/inter.css');
+
+:root {
+  --size-bezel: .5rem;
+  --size-radius: 4px;
+}
+.input {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  outline: none;
-  text-align: center;
-  font-weight: 600;
-  font-size: 16px;
+  
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
+    margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
+    background: pink;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    background: var(--color-background);
+    transition: transform 120ms ease-in;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--primary-color);
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+  &__field {
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 12px;
+    line-height: 19px;
+    margin-bottom: 15px;
+    padding: 15px;
+    height: 50px;
+    width: 100%;
+    transition: all .3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 5px;
+    &:focus {
+      &::placeholder {
+        color: var(--primary-light-color);
+      }
+    }
+    &::placeholder {
+      color: transparent;
+    }
+    &.input-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+    &:focus, &:not(:placeholder-shown)
+     {
+      & + .input__label {
+        transform: translate(.25rem, -65%) scale(.8);
+        color: var(--primary-color);
+        background: white;
+        width: fit-content;
+        font-size: 12px;
+      }
+    }
+  }
 }
-input:hover {
 
-}
-::placeholder {
-  color: var(--primary-color);
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: var(--primary-color);
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-  color: var(--primary-color);
-}
-
-.input-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-.input-outline:focus {
-  border-color: var(--primary-dark-color);
-}
-
-.input-outline:hover {
-  color: var(--primary-dark-color);
-}
 
 @media(max-width: 540px) {
-  input {
-    width: 95%;
+  .input__field {
     height: 40px;
     padding: 12px;
     margin: 0 auto 10px auto;
-    font-size: 14px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    &:focus, &:not(:placeholder-shown)
+    {
+     & + .input__label {
+       transform: translate(1rem, -65%) scale(.8);
+       color: var(--primary-color);
+       background: white;
+       width: fit-content;
+       font-size: 10px;
+     }
+   }
+  }
+  .input__label {
+    font-size: 12px;
+    top: -3px;
   }
 }

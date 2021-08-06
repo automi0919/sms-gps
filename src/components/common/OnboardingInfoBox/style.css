@@ -15,6 +15,6 @@
 @media(max-width: 540px) {
   .info-outline {
     margin-bottom: 10px;
-    font-size: ;
+    padding: 5px 10px;
   }
 }

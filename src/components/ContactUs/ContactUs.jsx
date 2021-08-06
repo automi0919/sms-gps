@@ -36,7 +36,7 @@ function ContactUs(props) {
 
   return (
     <Panel>
-      <div className='container'>
+      <div className='contactus-container'>
         <div className="title-wrapper">
           <p className="description">Say Hello to our team</p>
         </div>

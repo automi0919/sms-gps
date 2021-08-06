@@ -35,7 +35,7 @@ const Layout = (props: PropsType) => {
   return (
     <div className="layout-container">
       <div className="map-wrapper">
-        {center.lat &&
+        {center && center?.lat &&
           <Map location={center} zoomLevel={14} points={markPosArray} />
         }
       </div>

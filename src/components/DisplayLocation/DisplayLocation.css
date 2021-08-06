@@ -32,4 +32,16 @@
   display: inline-block;
   margin-top: 4px;
 }
+
+@media (max-width: 540px) {
+  .info span {
+    font-weight: 500;
+  }
+  .info .info-title {
+    font-size: 11px;
+  }
+  .info .info-detail {
+    font-size: 10px;
+  }
+}
 /*# sourceMappingURL=DisplayLocation.css.map */

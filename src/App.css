@@ -55,6 +55,7 @@
 :root {
   --primary-color: #466AE9;
   --primary-dark-color: #2944a7;
+  --primary-light-color: #879ef1;
   --second-color: #ebe8e8;
   --breakpoint: 540px;
 }
