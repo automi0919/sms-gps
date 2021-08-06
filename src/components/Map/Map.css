@@ -7,11 +7,3 @@
     bottom: 0;
     right: 0;
 }
-.map-marker {
-    width: 100px;
-    height: 120px; 
-    position: "absolute";
-    top: "100%";
-    left: "50%";
-    transform: translate(-50%, -100%);
-}

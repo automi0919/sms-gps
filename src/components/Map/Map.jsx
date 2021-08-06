@@ -191,6 +191,14 @@ const Map = ({ location, zoomLevel, points }) => {
     lat: typeof location.lat === 'number' ? location.lat : parseFloat(location.lat),
     lng: typeof location.lng === 'number' ? location.lng : parseFloat(location.lng),
   }
+  const markerStyle =  {
+    width: "100",
+    height: "80px", 
+    position: "absolute",
+    top: "100%",
+    left: "50%",
+    transform: "translate(-50%, -100%)",
+    }
   return (
     <Wrapper>
       <div className='google-map'>
@@ -207,8 +215,8 @@ const Map = ({ location, zoomLevel, points }) => {
               lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
             }
             if (position.lat && position.lng) {
-              return <Marker key={index} {...position}  />
-            } 
+              return <img src='/assets/images/map_marker.svg' alt="Marker" key={index} style={markerStyle} {...position}/>
+            }
           })}
         </GoogleMapReact>
       </div>
