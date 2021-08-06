@@ -30,7 +30,7 @@ const Layout = (props: PropsType) => {
   }
   console.log(markPos)
   console.log(markPosArray[0])
-  let center = markPosArray[0] ? markPosArray[0] : markPos;
+  let center = markPosArray[0] && markPosArray[0].lat ? markPosArray[0] : markPos;
 
   return (
     <div className="layout-container">
