@@ -59,3 +59,7 @@
   --second-color: #ebe8e8;
   --breakpoint: 540px;
 }
+
+li::first-letter {
+  text-transform: uppercase;
+}
