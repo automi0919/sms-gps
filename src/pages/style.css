@@ -6,6 +6,10 @@
   background: #dfd8d8;
   height: 100vh;
 }
+.map-wrapper {
+  height: 100%;
+  width: 100%;
+}
 @media(max-width: 540px) {
   .map-wrapper {
     display:none;

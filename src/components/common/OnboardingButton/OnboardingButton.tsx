@@ -15,7 +15,8 @@ const OnboardingButton = (props:PropsType) => {
       type={props.type ? props.type : 'button'}
       className={"btn " + (props.fill ? "btn-fill": 'btn-outline')} 
       onClick={handleClick}
-      disabled={props.loading}>
+      disabled={props.loading}
+      style={{height: props.height}}>
         { props.loading  &&  <FontAwesomeIcon icon={faCircleNotch}  size="2x" spin/> }
         { !props.loading && props.children }
       </button>
@@ -28,5 +29,6 @@ interface PropsType {
   type?: "button" | "submit" | "reset" | undefined;
   children: any;
   loading?: boolean;
+  height?: string;
 }
 export default OnboardingButton;

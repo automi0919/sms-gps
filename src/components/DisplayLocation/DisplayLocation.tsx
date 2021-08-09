@@ -6,6 +6,7 @@ import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox';
 import OnboardingButton from '../common/OnboardingButton/OnboardingButton';
 import { getCurrentGeoLocation, REQUEST_STATE, sendLocation, setApprovedPos } from '../../store/sms/actions';
 import { useEffect } from 'react';
+import Map from '../Map/Map';
 
 function DisplayLocation(props: any) {
   const queryString = window.location.search;
@@ -13,14 +14,15 @@ function DisplayLocation(props: any) {
   const id = urlParams.get('id');
   const lat = urlParams.get('lat');
   const lng = urlParams.get('lng');
+  const phonenumber = urlParams.get('phonenumber');
   const what3words = urlParams.get('what3words');
 
   const dispatch = useDispatch();
   const request_state = useSelector(state => getRequestState(state));
 
-  var approvedPos = useSelector(state => approvedData(state));
+  var {approvedPos, approvedNumber} = useSelector(state => approvedData(state));
   var currentPos = useSelector(state => currentGeoLocation(state));
-  var sharedPos = { lat, lng, what3words };
+  var sharedPos = { lat, lng, what3words, phonenumber };
 
   const pos = id ? currentPos : (lat || lng) ? sharedPos : approvedPos;
   useEffect(() => {
@@ -39,11 +41,12 @@ function DisplayLocation(props: any) {
         }
       }
     }
+    if (id && pos.lat) {
+      dispatch(sendLocation(pos, id));
+    }
   }, []);
 
-  if (id && pos.lat) {
-    dispatch(sendLocation(pos, id));
-  }
+  
 
   const openGoogleMap = () => {
     let coordinates = `${pos.lat},${pos.lng}`;
@@ -94,30 +97,38 @@ function DisplayLocation(props: any) {
   }
 
   return (
-    <Panel>
+    <Panel logoSize="60px">
       <div className='display-container'>
-        <OnboardingInfoBox onClick={copyGeoPos}>
-          <div className="info">
-            <span className="info-title">GPS LOCATION - TAP TO COPY</span>
-            <span className='info-detail'>{pos.lng}</span>
-            <span className='info-detail'>{pos.lat}</span>
+        <OnboardingButton type="button" fill={true}>
+          {id ? 'YOU SHARED YOUR LOCATION' : `${approvedNumber} HAS SHARED THEIR LOCATION`}
+        </OnboardingButton>
+        <div className="detail-wrapper">
+          <OnboardingInfoBox onClick={copyGeoPos}>
+            <div className="info">
+              <span className="info-title">GPS LOCATION - TAP TO COPY</span>
+              <span className='info-detail'>{pos.lng}</span>
+              <span className='info-detail'>{pos.lat}</span>
+            </div>
+          </OnboardingInfoBox>
+          <OnboardingInfoBox onClick={copyWhat3words}>
+            <div className="info">
+              <span className="info-title">WHAT3WORDS LOCATION - TAP TO COPY</span>
+              <span className='info-detail'>{'///' + pos.what3words}</span>
+            </div>
+          </OnboardingInfoBox>
+          <div className="mini-map-container">
+            <Map location={pos} zoomLevel={17} points={[pos]}/>
           </div>
-        </OnboardingInfoBox>
-        <OnboardingInfoBox onClick={copyWhat3words}>
-          <div className="info">
-            <span className="info-title">WHAT3WORDS LOCATION - TAP TO COPY</span>
-            <span className='info-detail'>{'///' + pos.what3words}</span>
-          </div>
-        </OnboardingInfoBox>
-        <OnboardingButton type="button" fill={true} onClick={openGoogleMap}>
-          open in google maps
-        </OnboardingButton>
-        <OnboardingButton type="button" fill={true} onClick={openWhat3Words}>
-          open in what3words
-        </OnboardingButton>
-        <OnboardingButton type="button" fill={true} onClick={shareLocation}>
-          share location
-        </OnboardingButton>
+          <OnboardingButton type="button" fill={true} onClick={openGoogleMap}>
+            open in google maps
+          </OnboardingButton>
+          <OnboardingButton type="button" fill={true} onClick={openWhat3Words}>
+            open in what3words
+          </OnboardingButton>
+          <OnboardingButton type="button" fill={true} onClick={shareLocation}>
+            call emergency services
+          </OnboardingButton>
+        </div>
       </div>
     </Panel>
   )

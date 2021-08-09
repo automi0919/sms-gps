@@ -9,6 +9,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

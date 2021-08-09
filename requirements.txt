@@ -39,3 +39,19 @@ FTP PASSWORD: !F^$P(&K@x]72E[RNTa4
 FTP ADDRESS: ftp.safelocate.io or 122.201.64.137
 Be sure to upload all files to the public_html directory.
 LOGIN NOW
+
+
+
+
+//08-08
+1. Change icon when saved to desktop
+2. Change screen when you launch it as a Web app with logo (remove react info)
+3. Remove react detail when sharing link on Facebook etc
+4. Change home screen to new design (complete)
+5. Entering screen - make name compulsary
+6. Fix indent on sms for reciever
+7. Add popup to share on reciver screen after sms. Currently without it sms sends every time the screen refreshes
+8. The screen should update when shared
+9. Change shared screen to new design with map
+10. Add a pop up to ADD TO HOME SCREEN
+I'll send screen shots in word doc tomorrow

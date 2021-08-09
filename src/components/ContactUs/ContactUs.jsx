@@ -35,7 +35,7 @@ function ContactUs(props) {
   }
 
   return (
-    <Panel>
+    <Panel logoSize="60px">
       <div className='contactus-container'>
         <div className="title-wrapper">
           <p className="description">Say Hello to our team</p>
@@ -72,6 +72,7 @@ function ContactUs(props) {
               fill={true}
               type='submit'
               loading={contact_us_state === CONTACT_US_STATE.SENDING}
+              height="50px"
             >
               SEND MESSAGE
             </OnboardingButton>

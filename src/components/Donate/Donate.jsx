@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Donate(props) {
   return (
-    <Panel>
+    <Panel logoSize="60px">
       <div className="privacy-container">
         <h3 className="title">Donate</h3>
         <p>Sorry. This is not developed yet</p>

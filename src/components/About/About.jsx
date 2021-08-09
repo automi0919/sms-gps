@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function About(props) {
   return (
-    <Panel>
+    <Panel logoSize="60px">
       <div className='privacy-container'>
         <Scrollbars style={{ height: 400 }}>
           <h3 className='title'>About</h3>

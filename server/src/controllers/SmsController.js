@@ -59,7 +59,7 @@ async function sendShareRequest(req, res, next) {
     const pos = req.body.pos;
 
     var siteUrl = req.protocol + '://' + req.get('host');
-    var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}`;
+    var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}&phonenumber=${from}`;
 
     var msgTemplate = getShareMessageBody(from, linkUrl);
     var result = await sendTwilioSMS(TWILIO_NUMBER, to, msgTemplate);
@@ -90,10 +90,10 @@ async function sendLocation(req, res, next) {
       let to = result.to_number
       pos.type = 'UPDATE_POS';
       console.log(pos)
-      wss.sendToRequester(socketID, pos);
+      wss.sendToRequester(socketID, pos, from);
 
       var siteUrl = req.protocol + '://' + req.get('host');
-      var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}`;
+      var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}&phonenumber=${from}`;
 
       var msgTemplate = getShareMessageBody(to, linkUrl);
       try {

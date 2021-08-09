@@ -14,6 +14,10 @@
           flex: 1;
 }
 
+.contactus-container form {
+  margin-top: 20px;
+}
+
 .contactus-container .btn-wrapper {
   margin: 25px auto 20px auto;
 }

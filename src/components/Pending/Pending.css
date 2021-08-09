@@ -2,20 +2,16 @@
   text-align: center;
   color: var(--primary-color);
   font-family: 'Segoe UI';
-  width: 76%;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: auto;
 }
 
 .approval-container p {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   font-weight: 600;
   text-transform: uppercase;
-  margin-top: 30px;
-}
-
-.approval-container img {
-  width: 45px;
-  height: auto;
+  margin: auto;
+  width: 80%;
 }
 /*# sourceMappingURL=Pending.css.map */

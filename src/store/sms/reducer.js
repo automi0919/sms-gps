@@ -5,7 +5,7 @@ const initialState = {
   current_geolocation: {},
   request_state: REQUEST_STATE.NOTSEND,
   requested_data: {},
-  approved_data: {},
+  approved_data: {approvedPos: {lat: '', lng: ''}, approvedNumber: ''},
   error: '',
   contact_us_state: CONTACT_US_STATE.NOTSEND
 }

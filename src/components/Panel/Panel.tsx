@@ -9,15 +9,23 @@ const Panel = (props: PropsType) => {
     <div className='panel'>
       <div className='logo'>
         <Link to="/">
-          <img src='/assets/images/logo.png' alt='Logo' srcSet='' />
+          <img src='/assets/images/logo.png' alt='Logo' srcSet=''
+          style={{width: props.logoSize}} />
         </Link>
-        <h2 className="logo-title">safe locate</h2>
-        <label className="logo-description">sms your gps</label>
+        {
+          location.pathname === '/' && (
+            <>
+              <h2 className="logo-title">safe locate</h2>
+              <label className="logo-description">sms your gps</label>
+            </>
+          )
+        }
+    
       </div>
       <div className="content-wrapper">
         {props.children}
       </div>
-      {location.pathname !== '/privacy' && <Link className="copyright-wrapper" to='/privacy'>
+      {location.pathname !== '/privacy' && location.pathname !== '/display' && <Link className="copyright-wrapper" to='/privacy'>
         <span className="privacy-link">Privacy Policy</span>
         <span>COPYRIGHT 2021</span>
       </Link>}
@@ -34,5 +42,6 @@ const Panel = (props: PropsType) => {
 interface PropsType {
   children: any;
   history?: any;
+  logoSize?: string;
 }
 export default Panel;

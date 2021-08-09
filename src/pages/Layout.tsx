@@ -12,7 +12,7 @@ const Layout = (props: PropsType) => {
     dispatch(getCurrentGeoLocation());
   }, []);
   const markPos = useSelector(state => currentGeoLocation(state));
-  const approvedPos = useSelector(state => approvedData(state));
+  const {approvedPos, approvedNumber} = useSelector(state => approvedData(state));
 
   let markPosArray: any[] = [];
   const history = useHistory();
@@ -56,7 +56,7 @@ interface PropsType {
 interface MarkerPropTypes {
   lat: number,
   lng: number,
-  text?: string
+  text?: string,
 }
 
 export default Layout;

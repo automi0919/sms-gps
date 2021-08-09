@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function PrivacyPolicy(props) {
   return (
-    <Panel>
+    <Panel logoSize="60px">
       <div className="privacy-container">
         <h3 className="title">Privacy Policy</h3>
         <Scrollbars style={{ height: 438 }}>

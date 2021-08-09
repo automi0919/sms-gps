@@ -1,6 +1,12 @@
 .wrapper {
   text-align: left;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: auto;
 }
 
 .wrapper .title-wrapper {
@@ -12,19 +18,21 @@
           justify-content: center;
 }
 
-.wrapper .description {
-  margin: 0;
-  color: black;
-  text-transform: uppercase;
-  font-size: 14px;
-  text-align: center;
-  width: 91%;
-  font-weight: 800;
-  color: var(--primary-dark-color);
-}
-
 .wrapper .btn-group {
-  margin-top: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (max-width: 540px) {

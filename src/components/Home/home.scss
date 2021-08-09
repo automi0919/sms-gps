@@ -1,23 +1,19 @@
 .wrapper {
   text-align: left;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  flex: 1;
+  justify-content: space-around;
+  margin: auto;
   .title-wrapper {
     display: flex;
     justify-content: center;
   }
-  .description {
-    margin: 0;
-    color: black;
-    text-transform: uppercase;
-    font-size: 14px;
-    text-align: center;
-    width: 91%;
-    font-weight: 800;
-    color: var(--primary-dark-color);
-  }
   .btn-group {
-    margin-top: 10px;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 

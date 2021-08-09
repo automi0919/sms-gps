@@ -1,6 +1,6 @@
 html,
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI Regular', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .panel {
@@ -22,7 +22,7 @@ html,
   background: #ffffff;
   -webkit-box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.1);
-  padding: 50px;
+  padding: 35px;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -43,7 +43,12 @@ html,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 50px;
+  margin: 0 auto 20px auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .panel .copyright-wrapper {
@@ -127,6 +132,7 @@ html,
   color: black;
   margin: 0 auto;
   text-transform: uppercase;
+  font-family: 'Segoe UI Bold';
 }
 
 .logo .logo-description {
@@ -135,12 +141,13 @@ html,
   color: black;
   margin: 0 auto;
   display: inline-block;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
   text-transform: uppercase;
+  font-family: 'Segoe UI Regular';
 }
 
 .logo img {
-  width: 100px;
+  width: 140px;
   height: auto;
   background-size: cover;
 }
@@ -229,6 +236,7 @@ html,
     align-items: center;
     border-radius: 50%;
     bottom: -70px;
+    font-family: 'Segoe UI Regular';
   }
 }
 

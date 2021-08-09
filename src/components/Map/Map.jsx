@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import GoogleMapReact from 'google-map-react'
 
 import './Map.css'
+import { useSelector } from 'react-redux'
+import { currentGeoLocation } from '../../store/sms/reducer';
+import { getFormatedPos, isValidPos } from '../../js/utils';
 
 const Wrapper = styled.main`
   width: 100%;
@@ -182,15 +185,29 @@ const createMapOptions = () => {
     ],
   }
 }
+
 const Marker = ({ pos }) => <img src='/assets/images/map_marker.svg' alt="Marker" className="map-marker"/>
 
-const Map = ({ location, zoomLevel, points }) => {
-  const [map, setmap] = useState(null)
-  const [maps, setmaps] = useState(null)
+const Map = (props) => {
+  const {location} = props;
+  const {zoomLevel} = props;
+  const {points} = props;
+
+  const currentPos = useSelector(state => currentGeoLocation(state));
   let center = {
     lat: typeof location.lat === 'number' ? location.lat : parseFloat(location.lat),
     lng: typeof location.lng === 'number' ? location.lng : parseFloat(location.lng),
   }
+  var markPoints = [];
+  Object.assign(markPoints, points);
+
+  if (!isValidPos(center)) {
+    center = currentPos;
+    console.log ('error: ', center);
+    markPoints = [];
+  }
+  console.log ('error1: ', center);
+
   const markerStyle =  {
     width: "100",
     height: "80px", 
@@ -210,11 +227,8 @@ const Map = ({ location, zoomLevel, points }) => {
           yesIWantToUseGoogleMapApiInternals
         >
           {points.map((pos, index) => {
-            let position = {
-              lat: typeof pos.lat === 'number' ? pos.lat : parseFloat(pos.lat),
-              lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
-            }
-            if (position.lat && position.lng) {
+            let position = getFormatedPos(pos);
+            if (isValidPos(position)) {
               return <img src='/assets/images/map_marker.svg' alt="Marker" key={index} style={markerStyle} {...position}/>
             }
           })}
