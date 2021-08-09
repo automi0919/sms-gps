@@ -123,7 +123,7 @@
 
 @media (max-width: 540px) {
   .input__field {
-    height: 40px;
+    height: 40px !important;
     padding: 12px;
     margin: 0 auto 10px auto;
     font-size: 12px;

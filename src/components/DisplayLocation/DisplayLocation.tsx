@@ -117,7 +117,7 @@ function DisplayLocation(props: any) {
             </div>
           </OnboardingInfoBox>
           <div className="mini-map-container">
-            <Map location={pos} zoomLevel={17} points={[pos]}/>
+            <Map location={pos} zoomLevel={14} points={[pos]}/>
           </div>
           <OnboardingButton type="button" fill={true} onClick={openGoogleMap}>
             open in google maps

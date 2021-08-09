@@ -72,7 +72,7 @@ function ContactUs(props) {
               fill={true}
               type='submit'
               loading={contact_us_state === CONTACT_US_STATE.SENDING}
-              height="50px"
+              height="7vh"
             >
               SEND MESSAGE
             </OnboardingButton>

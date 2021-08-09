@@ -33,7 +33,6 @@ async function sendRequest(req, res, next) {
             data: msg
           });
         } catch (e) {
-          console.log('twilio error: ', e);
           next(e)
           res.send({
             success: false
@@ -42,7 +41,6 @@ async function sendRequest(req, res, next) {
       });
     }
   } catch (e) {
-    console.log(e);
     next(e)
     res.send({
       success: false,
@@ -69,7 +67,6 @@ async function sendShareRequest(req, res, next) {
       success: result,
     })
   } catch (e) {
-    console.log(e);
     next(e)
     res.send({
       success: false,
@@ -89,7 +86,6 @@ async function sendLocation(req, res, next) {
       let from = result.from_number
       let to = result.to_number
       pos.type = 'UPDATE_POS';
-      console.log(pos)
       wss.sendToRequester(socketID, pos, from);
 
       var siteUrl = req.protocol + '://' + req.get('host');
@@ -115,7 +111,6 @@ async function sendLocation(req, res, next) {
       data: pos
     });
   } catch (e) {
-    console.log(e);
     next(e);
     res.send({
       success: false,
@@ -129,7 +124,6 @@ const sendTwilioSMS = async (from, to, msg) => {
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_AUTH_TOKEN
   );
-  console.log('twillio info: ', client);
   try {
     if (to) {
       to = to.replace(/\+/g, '');
@@ -147,7 +141,7 @@ const sendTwilioSMS = async (from, to, msg) => {
     console.log('to: ', to)
     client.lookups.v1.phoneNumbers(to)
                  .fetch({type: ['carrier']})
-                 .then(phone_number => console.log(phone_number.carrier));
+                 .then(phone_number => {});
     let result = await client.messages.create({
       from: from,
       to: to,
@@ -155,10 +149,8 @@ const sendTwilioSMS = async (from, to, msg) => {
     }).then((message) => {
       return true;
     });
-    console.log('result: ', result);
     return result;
   } catch (err) {
-    console.log('sms error:', err)
     return false;
   }
 
@@ -195,7 +187,6 @@ const sendContactUs = (req, res, next) => {
       });
     }
   } catch (e) {
-    console.log(e);
     next(e);
     res.send({
       success: false,

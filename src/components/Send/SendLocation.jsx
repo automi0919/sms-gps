@@ -81,7 +81,6 @@ function SendLocation(props) {
             <OnboardingButton
               fill={true}
               type='submit'
-              height="50px"
               loading={request_state === REQUEST_STATE.SENDING}
             >
               SEND SMS GPS REQUEST

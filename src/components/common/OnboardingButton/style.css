@@ -5,10 +5,10 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   padding: 15px;
   width: 300px;
-  height: 40px;
+  height: 6vh;
   width: 100%;
   transition: all .3s ease;
   display: flex;
@@ -41,11 +41,9 @@
 
 @media(max-width: 540px) {
   .btn {
-    height: 40px !important;
     font-size: 12px;
     line-height: 15px;
     padding: 12px;
     width: 100%;
-    margin: 0 auto 10px auto;
   }
 }
