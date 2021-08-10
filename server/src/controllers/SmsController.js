@@ -55,6 +55,7 @@ async function sendShareRequest(req, res, next) {
     const to = req.body.to;
     const name = req.body.name;
     const pos = req.body.pos;
+    from = from.replace(/ /g, '');
 
     var siteUrl = req.protocol + '://' + req.get('host');
     var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}&phonenumber=${from}`;
@@ -86,6 +87,7 @@ async function sendLocation(req, res, next) {
       let from = result.from_number
       let to = result.to_number
 
+      from = from.replace(/ /g, '');
       console.log('requested socketID: ', socketID, pos);
       
       let msg = {

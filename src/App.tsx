@@ -25,6 +25,8 @@ const App = (props: any) => {
       console.log('Received message from server: ', msg);
       switch (msg.type) {
         case 'UPDATE_POS':
+          dispatch(setApprovedPos({approvedPos: msg.approvedPos, phonenumber: msg.phonenumber}));
+          console.log('updated_pos: ', msg.approvedPos)
           history.push('/display');
           break;
         case 'SET_SOCKETID':

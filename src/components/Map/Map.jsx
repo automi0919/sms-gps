@@ -195,8 +195,8 @@ const Map = (props) => {
 
   const currentPos = useSelector(state => currentGeoLocation(state));
   let center = {
-    lat: typeof location.lat === 'number' ? location.lat : parseFloat(location.lat),
-    lng: typeof location.lng === 'number' ? location.lng : parseFloat(location.lng),
+    lat: typeof location?.lat === 'number' ? location?.lat : parseFloat(location?.lat),
+    lng: typeof location?.lng === 'number' ? location?.lng : parseFloat(location?.lng),
   }
   var markPoints = [];
   Object.assign(markPoints, points);

@@ -46,7 +46,7 @@ function DisplayLocation(props: any) {
   const id = urlParams.get('id');
   const lat = urlParams.get('lat');
   const lng = urlParams.get('lng');
-  const phonenumber = urlParams.get('phonenumber');
+  var phonenumber = urlParams.get('phonenumber');
   const what3words = urlParams.get('what3words');
 
   const type = getType(urlParams);
@@ -55,21 +55,21 @@ function DisplayLocation(props: any) {
   const triggerModal = () => {
     setModalShow(true);
   }
-
   switch (type) {
     case 'CURRENT':
       pos = current_pos;
       break;
     case 'SHARED':
-      pos = {lat, lng, what3words};
+      pos = {lat, lng, what3words}; 
       props.handleNotification('info', 'You have shared location');
       break;
     case 'APPROVED':
       pos = approvedPosData?.approvedPos;
+      phonenumber = approvedPosData?.phonenumber;
       props.handleNotification('info', 'Your request has been approved!');
       break;
   }
-
+  console.log('current approvedPosData: ', approvedPosData);
   console.log('current location: ', pos)
 
   useEffect(() => {
@@ -80,13 +80,13 @@ function DisplayLocation(props: any) {
   }, []);
 
   const openGoogleMap = () => {
-    let coordinates = `${pos.lat},${pos.lng}`;
+    let coordinates = `${pos?.lat},${pos?.lng}`;
     let url = `https://www.google.com.sa/maps/search/${coordinates}?hl=en`;
     window.open(url, '_blank');
   }
 
   const openWhat3Words = () => {
-    let url = `https://what3words.com/${pos.what3words}`
+    let url = `https://what3words.com/${pos?.what3words}`
     window.open(url, '_blank');
   }
 
@@ -112,7 +112,7 @@ function DisplayLocation(props: any) {
   }
 
   const copyGeoPos = () => {
-    let textToCopy = `latitude: ${pos.lat}, longitude: ${pos.lng}`;
+    let textToCopy = `latitude: ${pos?.lat}, longitude: ${pos?.lng}`;
     navigator.clipboard.writeText(textToCopy);
     if (props.handleNotification) {
       props.handleNotification("success", `GPS position copied!`, `${textToCopy}`);
@@ -120,7 +120,7 @@ function DisplayLocation(props: any) {
   }
 
   const copyWhat3words = () => {
-    let textToCopy = `${pos.what3words}`;
+    let textToCopy = `${pos?.what3words}`;
     navigator.clipboard.writeText(textToCopy);
     if (props.handleNotification) {
       props.handleNotification("success", `What3words copied!`, `${textToCopy}`);
@@ -137,21 +137,23 @@ function DisplayLocation(props: any) {
   return (
     <Panel logoSize="60px">
       <div className='display-container'>
-        <OnboardingInfoBox  fill={true}>
-          {id ? 'YOU SHARED YOUR LOCATION' : `${phonenumber} HAS SHARED THEIR LOCATION`}
+        <OnboardingInfoBox  fill={true} width="70%" padding={"5px"}>
+          <span style={{fontSize: "12px"}}>
+            {id ? 'YOU SHARED YOUR LOCATION' : `${phonenumber} HAS SHARED THEIR LOCATION`}
+          </span>
         </OnboardingInfoBox>
         <div className="detail-wrapper">
           <OnboardingInfoBox onClick={copyGeoPos}>
             <div className="info">
               <span className="info-title">GPS LOCATION - TAP TO COPY</span>
-              <span className='info-detail'>{pos.lng}</span>
-              <span className='info-detail'>{pos.lat}</span>
+              <span className='info-detail'>{pos?.lng}</span>
+              <span className='info-detail'>{pos?.lat}</span>
             </div>
           </OnboardingInfoBox>
           <OnboardingInfoBox onClick={copyWhat3words}>
             <div className="info">
               <span className="info-title">WHAT3WORDS LOCATION - TAP TO COPY</span>
-              <span className='info-detail'>{'///' + pos.what3words}</span>
+              <span className='info-detail'>{'///' + pos?.what3words}</span>
             </div>
           </OnboardingInfoBox>
           <div className="mini-map-container">
