@@ -8,8 +8,9 @@ const OnboardingInfoBox = (props: PropsType) => {
   }
   return (
     <div
-      className='info-outline'
+      className={props.fill ? 'info info-fill': 'info info-outline'}
       onClick={handleClick}
+      style={{width: props.width}}
     >
       {props.children}
     </div>
@@ -18,6 +19,8 @@ const OnboardingInfoBox = (props: PropsType) => {
 
 interface PropsType {
   onClick?: () => void;
-  children: any
+  children: any;
+  fill?: boolean;
+  width?: string;
 }
 export default OnboardingInfoBox;

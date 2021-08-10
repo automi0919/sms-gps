@@ -85,12 +85,19 @@ async function sendLocation(req, res, next) {
       let socketID = result.socketID;
       let from = result.from_number
       let to = result.to_number
-      pos.type = 'UPDATE_POS';
-      wss.sendToRequester(socketID, pos, from);
+
+      console.log('requested socketID: ', socketID, pos);
+      
+      let msg = {
+        approvedPos: pos,
+        phonenumber: from,
+        type: 'UPDATE_POS'
+      }
+      wss.sendToRequester(socketID, msg);
 
       var siteUrl = req.protocol + '://' + req.get('host');
       var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}&phonenumber=${from}`;
-
+      console.log('reply msg: ', linkUrl);``
       var msgTemplate = getShareMessageBody(to, linkUrl);
       try {
         var success = await sendTwilioSMS(TWILIO_NUMBER, from, msgTemplate);

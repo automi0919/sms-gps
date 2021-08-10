@@ -28,21 +28,17 @@ wss.on('connection', (ws) => {
   sendMessage(ws, 'hi! you are connected!');
 })
 
-wss.sendToRequester = (socketID, msg, phone_number) => {
+wss.sendToRequester = (socketID, msg) => {
   console.log('SocketID: ', socketID);
   console.log('msg: ', msg);
-  let message = {
-    approvedPos: msg,
-    phonenumber: phone_number
-  }
+ 
   let client = clients.find(client => client.id === socketID);
   if (client) {
-    sendMessage(client, message);
+    sendMessage(client, msg);
   }
 }
 
 const sendMessage = (ws, msg) => {
-  console.log('sss: ', msg);
   ws.send(JSON.stringify(msg));
 }
 

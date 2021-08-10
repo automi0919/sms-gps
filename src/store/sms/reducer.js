@@ -1,4 +1,4 @@
-import { types, REQUEST_STATE, CONTACT_US_STATE } from './actions'
+import { types, REQUEST_STATE, CONTACT_US_STATE, CURRENT_STATE } from './actions'
 
 const initialState = {
   position: {},
@@ -7,7 +7,8 @@ const initialState = {
   requested_data: {},
   approved_data: {approvedPos: {lat: '', lng: ''}, approvedNumber: ''},
   error: '',
-  contact_us_state: CONTACT_US_STATE.NOTSEND
+  contact_us_state: CONTACT_US_STATE.NOTSEND,
+  current_state: CURRENT_STATE.NOTSET
 }
 
 const position_reducer =  (state = initialState, {type, payload}) => {
@@ -28,7 +29,7 @@ const position_reducer =  (state = initialState, {type, payload}) => {
     case types.SET_CURRENT_GEOLOCATION:
       return {
         ...state,
-        current_geolocation: payload
+        current_geolocation: payload,
       };
     case types.SEND_LOCATION:
       return {
@@ -90,4 +91,8 @@ export function getErrorMessage(state) {
 
 export function getContactUsState(state) {
   return state.sms.contact_us_state;
+}
+
+export function getCurrentState(state) {
+  return state.sms.current_state;
 }

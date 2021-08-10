@@ -1,4 +1,4 @@
-.btn {
+.custom-btn {
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 12px;
@@ -40,7 +40,7 @@
 }
 
 @media(max-width: 540px) {
-  .btn {
+  .custom-btn {
     font-size: 12px;
     line-height: 15px;
     padding: 12px;

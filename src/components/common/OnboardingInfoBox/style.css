@@ -1,4 +1,4 @@
-.info-outline {
+.info {
   border: 2px solid var(--primary-color);
   border-radius: 12px;
   color: var(--primary-color);
@@ -9,8 +9,16 @@
   cursor: pointer;
   font-family: 'Segoe UI Regular';
 }
+
+.info-outline {
+  background: transparent;
+}
 .info-outline:active {
   background: var(--second-color);
+}
+
+.info-fill {
+  background: var(--primary-color);
 }
 
 @media(max-width: 540px) {

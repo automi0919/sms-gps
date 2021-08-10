@@ -1,52 +1,83 @@
 import './DisplayLocation.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { approvedData, currentGeoLocation, getRequestState } from '../../store/sms/reducer';
+import { approvedData, currentGeoLocation, getCurrentState, getRequestState } from '../../store/sms/reducer';
 import Panel from '../Panel/Panel';
 import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox';
 import OnboardingButton from '../common/OnboardingButton/OnboardingButton';
-import { getCurrentGeoLocation, REQUEST_STATE, sendLocation, setApprovedPos } from '../../store/sms/actions';
-import { useEffect } from 'react';
+import { CURRENT_STATE, getCurrentGeoLocation, REQUEST_STATE, sendLocation, setApprovedPos } from '../../store/sms/actions';
+import { useEffect, useState } from 'react';
 import Map from '../Map/Map';
+import AllowSendLocationModal from '../Modals/AllowSendLocationModal';
+
+interface Pos {
+  lat: any,
+  lng: any,
+  what3words: any,
+};
+
+const getType = (urlParams: URLSearchParams): string => {
+  const id = urlParams.get('id');
+  const lat = urlParams.get('lat');
+  const lng = urlParams.get('lng');
+
+  let type = 'CURRENT';
+  if (id) {
+    type = 'CURRENT';
+  } else if (lat && lng) {
+    type = 'SHARED';
+  } else {
+    type = 'APPROVED';
+  }
+  return type;
+}
 
 function DisplayLocation(props: any) {
+  const dispatch = useDispatch();
+  const current_state = useSelector(state => getCurrentState(state));
+  const current_pos = useSelector(state => currentGeoLocation(state));
+  const approvedPosData = useSelector(state => approvedData(state));
+
+  const [modalShow, setModalShow] = useState(false);
+  const [allowApprove, setAllowApprove] = useState(false);
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
+
   const id = urlParams.get('id');
   const lat = urlParams.get('lat');
   const lng = urlParams.get('lng');
   const phonenumber = urlParams.get('phonenumber');
   const what3words = urlParams.get('what3words');
 
-  const dispatch = useDispatch();
-  const request_state = useSelector(state => getRequestState(state));
+  const type = getType(urlParams);
+  var pos: Pos = {lat: '', lng: '', what3words: ''};
 
-  var {approvedPos, approvedNumber} = useSelector(state => approvedData(state));
-  var currentPos = useSelector(state => currentGeoLocation(state));
-  var sharedPos = { lat, lng, what3words, phonenumber };
+  const triggerModal = () => {
+    setModalShow(true);
+  }
 
-  const pos = id ? currentPos : (lat || lng) ? sharedPos : approvedPos;
+  switch (type) {
+    case 'CURRENT':
+      pos = current_pos;
+      break;
+    case 'SHARED':
+      pos = {lat, lng, what3words};
+      props.handleNotification('info', 'You have shared location');
+      break;
+    case 'APPROVED':
+      pos = approvedPosData?.approvedPos;
+      props.handleNotification('info', 'Your request has been approved!');
+      break;
+  }
+
+  console.log('current location: ', pos)
+
   useEffect(() => {
-    dispatch(getCurrentGeoLocation());
-    if (sharedPos.lat) {
-      dispatch(setApprovedPos(sharedPos))
-    }
-    if (id) {
-      props.handleNotification('info', 'Your position has been sent!');
-    } else {
-      if (lat || lng) {
-        props.handleNotification('info', 'You have shared location');
-      } else {
-        if ((request_state === REQUEST_STATE.APPROVED)) {
-          props.handleNotification('info', 'Your request has been approved!');
-        }
-      }
-    }
-    if (id && pos.lat) {
-      dispatch(sendLocation(pos, id));
+    if (type === 'CURRENT') {
+      dispatch(getCurrentGeoLocation());
+      triggerModal();
     }
   }, []);
-
-  
 
   const openGoogleMap = () => {
     let coordinates = `${pos.lat},${pos.lng}`;
@@ -96,12 +127,19 @@ function DisplayLocation(props: any) {
     }
   }
 
+  const onAllow = () => {
+    pos = current_pos;
+    props.handleNotification('info', 'Your position has been sent!');
+    dispatch(sendLocation(pos, id));
+    setModalShow(false);
+  }
+
   return (
     <Panel logoSize="60px">
       <div className='display-container'>
-        <OnboardingButton type="button" fill={true}>
-          {id ? 'YOU SHARED YOUR LOCATION' : `${approvedNumber} HAS SHARED THEIR LOCATION`}
-        </OnboardingButton>
+        <OnboardingInfoBox  fill={true}>
+          {id ? 'YOU SHARED YOUR LOCATION' : `${phonenumber} HAS SHARED THEIR LOCATION`}
+        </OnboardingInfoBox>
         <div className="detail-wrapper">
           <OnboardingInfoBox onClick={copyGeoPos}>
             <div className="info">
@@ -117,7 +155,7 @@ function DisplayLocation(props: any) {
             </div>
           </OnboardingInfoBox>
           <div className="mini-map-container">
-            <Map location={pos} zoomLevel={14} points={[pos]}/>
+            <Map location={pos} zoomLevel={14} points={[pos]} />
           </div>
           <OnboardingButton type="button" fill={true} onClick={openGoogleMap}>
             open in google maps
@@ -130,6 +168,11 @@ function DisplayLocation(props: any) {
           </OnboardingButton>
         </div>
       </div>
+      <AllowSendLocationModal
+        show={modalShow}
+        onOK={onAllow}
+        onHide={() => setModalShow(false)}
+      />
     </Panel>
   )
 }

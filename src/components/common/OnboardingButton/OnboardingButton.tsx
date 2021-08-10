@@ -13,7 +13,7 @@ const OnboardingButton = (props:PropsType) => {
   return(
     <button 
       type={props.type ? props.type : 'button'}
-      className={"btn " + (props.fill ? "btn-fill": 'btn-outline')} 
+      className={"custom-btn " + (props.fill ? "btn-fill": 'btn-outline')} 
       onClick={handleClick}
       disabled={props.loading}
       style={{height: props.height}}>

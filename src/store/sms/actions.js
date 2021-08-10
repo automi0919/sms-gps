@@ -5,7 +5,7 @@ import { getWhat3words } from '../../api/what3words'
 import {getSocketID} from '../../api/socket';
 
 export const types = createTypes(['SEND_REQUEST','SEND_LOCATION', 'SET_CURRENT_GEOLOCATION', 'GET_REQUEST', 'APPROVED', 'ERROR', 'ERROR_FORMAT', 'FORMAT_REQUEST_STATE'
-, 'REQUEST_FAILD','SEND_CONTACT_US'
+, 'REQUEST_FAILD','SEND_CONTACT_US', 
 ], 'SMS')
 export const REQUEST_STATE = {
   NOTSEND: 'not send',
@@ -19,6 +19,10 @@ export const CONTACT_US_STATE = {
   SENDING: 'sending',
   DONE: 'done',
   FAILD: 'failed'
+}
+export const CURRENT_STATE = {
+  NOTSET: 'not set',
+  SET: 'set',
 }
 export const sendRequest = (from, to, name, msg) => (dispatch) => {
   dispatch({
