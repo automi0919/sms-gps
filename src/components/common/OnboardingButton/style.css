@@ -9,6 +9,7 @@
   padding: 15px;
   width: 300px;
   height: 6vh;
+  max-height: 50px;
   width: 100%;
   transition: all .3s ease;
   display: flex;
@@ -45,5 +46,7 @@
     line-height: 15px;
     padding: 12px;
     width: 100%;
+    max-height: 40px;
+
   }
 }

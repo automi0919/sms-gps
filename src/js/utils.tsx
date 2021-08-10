@@ -7,8 +7,8 @@ export const isValidPos = (pos: any): any => {
 
 export const getFormatedPos = (pos: any): any => {
   let position = {
-    lat: typeof pos.lat === 'number' ? pos.lat : parseFloat(pos.lat),
-    lng: typeof pos.lng === 'number' ? pos.lng : parseFloat(pos.lng),
+    lat: typeof pos?.lat === 'number' ? pos?.lat : parseFloat(pos?.lat),
+    lng: typeof pos?.lng === 'number' ? pos?.lng : parseFloat(pos?.lng),
   }
 
   return position;

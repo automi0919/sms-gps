@@ -109,10 +109,10 @@ export const sendLocation = (pos, id) => (dispatch) => {
   });
 }
 
-export const setApprovedPos = (pos) => {
+export const setApprovedPos = (data) => {
   return {
     type: types.APPROVED,
-    payload: pos
+    payload: data
   }
 }
 

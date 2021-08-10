@@ -1,17 +1,18 @@
-.info {
+.info-onboarding {
   border: 2px solid var(--primary-color);
   border-radius: 12px;
-  color: var(--primary-color);
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto;
   text-align: center;
   height: fit-content;
   padding: 3px 15px;
   cursor: pointer;
   font-family: 'Segoe UI Regular';
+  display: flex;
 }
 
 .info-outline {
   background: transparent;
+  color: var(--primary-color);
 }
 .info-outline:active {
   background: var(--second-color);
@@ -19,6 +20,7 @@
 
 .info-fill {
   background: var(--primary-color);
+  color: white;
 }
 
 @media(max-width: 540px) {
