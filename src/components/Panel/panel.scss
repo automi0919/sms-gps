@@ -187,3 +187,35 @@ html,
 .privacy-link {
   text-decoration: underline;
 }
+
+div.modal {
+  padding: 0px;
+  display: flex;
+}
+.modal-dialog {
+  width: 350px;
+  margin: auto;
+  button.close {
+    background: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    span {
+      font-size: 26px;
+    }
+  }
+  .modal-title {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Segoe UI Bold';
+  }
+}
+
+@media (max-width: 540px) {
+  .modal-dialog {
+    width: 90%;
+  }
+}

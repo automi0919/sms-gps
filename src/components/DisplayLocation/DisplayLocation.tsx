@@ -129,7 +129,7 @@ function DisplayLocation(props: any) {
 
   const onAllow = () => {
     pos = current_pos;
-    props.handleNotification('info', 'Your position has been sent!');
+    props.handleNotification('success', 'Your position has been sent!');
     dispatch(sendLocation(pos, id));
     setModalShow(false);
   }

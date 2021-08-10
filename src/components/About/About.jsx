@@ -7,7 +7,7 @@ function About(props) {
   return (
     <Panel logoSize="60px">
       <div className='privacy-container'>
-        <Scrollbars style={{ height: 400 }}>
+        <Scrollbars style={{ height: "80vh" }}>
           <h3 className='title'>About</h3>
           <p>
             <strong>SAFE LOCATE</strong> is a simple NO APP & 2 TAP way of

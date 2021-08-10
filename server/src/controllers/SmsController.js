@@ -51,7 +51,7 @@ async function sendRequest(req, res, next) {
 
 async function sendShareRequest(req, res, next) {
   try {
-    const from = req.body.from;
+    var  from = req.body.from;
     const to = req.body.to;
     const name = req.body.name;
     const pos = req.body.pos;
