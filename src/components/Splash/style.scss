@@ -1,0 +1,117 @@
+.header {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  animation: animationFadeOut 3s infinite linear;
+
+  &__list {
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--item {
+      display: block;
+      top: 0;
+      left: 0;
+      color: black;
+      background-size: cover;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .title {
+        font-size: 20px;
+        font-family: 'Segoe UI Bold';
+      }
+      .description {
+        font-size: 12px;
+        font-family: 'Segoe UI Regular';
+      }
+      .splash-image {
+        width: 80px;
+        height: 80px;
+      }
+      &:first-child {
+        animation: animationFade 10s infinite linear;
+      }
+    }
+  }
+}
+
+@keyframes animationFade {
+  0% {
+    transform: scale(0.5);
+  }
+
+  10% {
+    transform: scale(0.75);
+  }
+
+  20% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.1);
+  }
+
+  40% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  90% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+
+@keyframes animationFadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  10% {
+    opacity: 0.8;
+
+  }
+
+  20% {
+    opacity: 0.7;
+
+  }
+
+  30% {
+    opacity: 0.6;
+
+  }
+
+  40% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  90% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0.1;
+  }
+}

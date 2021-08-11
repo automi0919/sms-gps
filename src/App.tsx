@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom'
 import guestRoutes from './routes/guest'
 import './App.css'
@@ -11,13 +11,14 @@ import 'react-notifications/lib/notifications.css';
 import Layout from './pages/Layout';
 //@ts-ignore
 import { AnimatedSwitch } from 'react-router-transition';
+import Splash from './components/Splash/Splash';
 
 const App = (props: any) => {
   const routes = guestRoutes;
   const webSocket = getSocket();
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const [isSplash, setIsSplash] = useState(true);
   useEffect(() => {
     document.title = 'Safe Locate';
     webSocket.onmessage = (event: any) => {
@@ -25,7 +26,7 @@ const App = (props: any) => {
       console.log('Received message from server: ', msg);
       switch (msg.type) {
         case 'UPDATE_POS':
-          dispatch(setApprovedPos({approvedPos: msg.approvedPos, phonenumber: msg.phonenumber}));
+          dispatch(setApprovedPos({ approvedPos: msg.approvedPos, phonenumber: msg.phonenumber }));
           console.log('updated_pos: ', msg.approvedPos)
           history.push('/display');
           break;
@@ -38,6 +39,10 @@ const App = (props: any) => {
           break;
       }
     }
+    setTimeout(() => {
+      setIsSplash(false);
+    }, 3000);
+
     return () => {
       webSocket.close();
     }
@@ -46,7 +51,7 @@ const App = (props: any) => {
   const routingComponent = (
     <Layout>
       <Switch
-     
+
         location={location}
       >
         {routes.map((route: any, index: any) => {
@@ -84,9 +89,25 @@ const App = (props: any) => {
   return (
     <>
       {
-        routingComponent
+        isSplash &&
+        <Splash
+          text="Project Name"
+          src='/assets/images/logo.png'
+          style={{ height: '100vh' }}
+        />
       }
-      <NotificationContainer />
+
+      {
+        !isSplash &&
+        <>
+          {
+            routingComponent
+          }
+
+          <NotificationContainer />
+        </>
+      }
+
     </>
   )
 }
