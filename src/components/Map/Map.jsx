@@ -188,14 +188,6 @@ const createMapOptions = () => {
 
 const Marker = ({ pos }) => <img src='/assets/images/map_marker.svg' alt="Marker" className="map-marker"/>
 
-const renderMarkers = (map, maps, pos) => {
-  let marker = new maps.Marker({
-    position: { lat: pos.lat, lng: pos.lng },
-    map
-  });
-  return marker;
- };
-
 const Map = (props) => {
   const {location} = props;
   const {zoomLevel} = props;
@@ -215,14 +207,26 @@ const Map = (props) => {
   }
   console.log ('error1: ', center);
 
-  const markerStyle =  {
-    width: "100",
-    height: "80px", 
-    position: "absolute",
-    top: "100%",
-    left: "50%",
-    transform: "translate(-50%, -100%)",
-  }
+  const markIcon = "/assets/images/map_marker.png";
+
+  const renderMarkers = (map, maps, pos) => {
+    let marker = new maps.Marker({
+      position: { lat: pos.lat, lng: pos.lng },
+      map,
+      size: new maps.Size(20, 32),
+      icon: markIcon
+    });
+    return marker;
+  };
+  // const markerStyle =  {
+  //   width: "100",
+  //   height: "80px", 
+  //   position: "absolute",
+  //   top: "100%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -100%)",
+  // }
+  
   return (
     <Wrapper>
       <div className='google-map'>
