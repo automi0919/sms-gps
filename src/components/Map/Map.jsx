@@ -198,9 +198,8 @@ const Map = (props) => {
     lat: typeof location?.lat === 'number' ? location?.lat : parseFloat(location?.lat),
     lng: typeof location?.lng === 'number' ? location?.lng : parseFloat(location?.lng),
   }
-  var markPoints = [];
-  Object.assign(markPoints, points);
-
+  var markPoints =points;
+  console.log('markerPoints: ', points);
   if (!isValidPos(center)) {
     center = currentPos;
     console.log ('error: ', center);
@@ -228,7 +227,9 @@ const Map = (props) => {
         >
           {points.map((pos, index) => {
             let position = getFormatedPos(pos);
+            console.log('marker1: ', pos);
             if (isValidPos(position)) {
+              console.log('marker: ', pos);
               return <img src='/assets/images/map_marker.svg' alt="Marker" key={index} style={markerStyle} {...position}/>
             }
           })}

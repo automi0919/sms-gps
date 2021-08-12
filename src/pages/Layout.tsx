@@ -27,6 +27,8 @@ const Layout = (props: PropsType) => {
     } else {
       markPosArray = [markPos];
     }
+  } else {
+    markPosArray = [markPos];
   }
   console.log(markPos)
   console.log(markPosArray[0])
