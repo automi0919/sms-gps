@@ -60,7 +60,7 @@ function SendLocation(props) {
           <OnboardingTextInput
             type='text'
             placeholder="RECEIVER'S MOBILE NUMBER*"
-            value={"435210212"}
+            value={to}
             onChange={setToNumber}
             required={true}
             mask="+6\1 999 999 999"
