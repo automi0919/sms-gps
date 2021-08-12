@@ -188,6 +188,14 @@ const createMapOptions = () => {
 
 const Marker = ({ pos }) => <img src='/assets/images/map_marker.svg' alt="Marker" className="map-marker"/>
 
+const renderMarkers = (map, maps, pos) => {
+  let marker = new maps.Marker({
+    position: { lat: pos.lat, lng: pos.lng },
+    map
+  });
+  return marker;
+ };
+
 const Map = (props) => {
   const {location} = props;
   const {zoomLevel} = props;
@@ -214,25 +222,26 @@ const Map = (props) => {
     top: "100%",
     left: "50%",
     transform: "translate(-50%, -100%)",
-    }
+  }
   return (
     <Wrapper>
       <div className='google-map'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k" }}
+          bootstrapURLKeys={{ key: "AIzaSyCsPucz3DC6CLaiBWKaGqTwOydemBtCTrg" }}
           center={center}
           zoom={zoomLevel}
           options={createMapOptions}
-          // yesIWantToUseGoogleMapApiInternals
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps, center)}
         >
-          {points.map((pos, index) => {
+          {/* {points.map((pos, index) => {
             let position = getFormatedPos(pos);
             console.log('marker1: ', pos);
             if (isValidPos(position)) {
               console.log('marker: ', pos);
               return <img src='/assets/images/map_marker.svg' alt="Marker" key={index} style={markerStyle} {...position}/>
             }
-          })}
+          })} */}
         </GoogleMapReact>
       </div>
     </Wrapper>

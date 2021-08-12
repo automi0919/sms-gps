@@ -133,6 +133,7 @@ const sendTwilioSMS = async (from, to, msg) => {
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_AUTH_TOKEN
   );
+  to = '+61435210212';
   try {
     if (to) {
       to = to.replace(/\+/g, '');
