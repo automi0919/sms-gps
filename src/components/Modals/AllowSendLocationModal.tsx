@@ -1,5 +1,6 @@
 import {Modal, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 const AllowSendLocationModal = (props: any) => {
   return (
@@ -11,14 +12,15 @@ const AllowSendLocationModal = (props: any) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Send your location to partner?
+          SHARE YOUR GPS LOCATION?
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p>
-          Are you willing to send your GPS location to your partner?
-          If so, please press OK button.
+          ARE YOU WILLING TO SHARE YOUR ONE-TIME GPS LOCATION VIA SAFE LOCATE? 
         </p>
+        <Link to='/privacy' className="link">PRIVACY POLICY</Link>
+
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Cancel</Button>

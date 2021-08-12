@@ -224,7 +224,7 @@ const Map = (props) => {
           center={center}
           zoom={zoomLevel}
           options={createMapOptions}
-          yesIWantToUseGoogleMapApiInternals
+          // yesIWantToUseGoogleMapApiInternals
         >
           {points.map((pos, index) => {
             let position = getFormatedPos(pos);

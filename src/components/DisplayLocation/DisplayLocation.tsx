@@ -33,12 +33,10 @@ const getType = (urlParams: URLSearchParams): string => {
 
 function DisplayLocation(props: any) {
   const dispatch = useDispatch();
-  const current_state = useSelector(state => getCurrentState(state));
   const current_pos = useSelector(state => currentGeoLocation(state));
   const approvedPosData = useSelector(state => approvedData(state));
 
   const [modalShow, setModalShow] = useState(false);
-  const [allowApprove, setAllowApprove] = useState(false);
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -69,12 +67,11 @@ function DisplayLocation(props: any) {
       props.handleNotification('info', 'Your request has been approved!');
       break;
   }
-  console.log('current approvedPosData: ', approvedPosData);
+  console.log('current approvedPosData: ', pos);
   console.log('current location: ', pos)
 
   useEffect(() => {
     if (type === 'CURRENT') {
-      dispatch(getCurrentGeoLocation());
       triggerModal();
     }
   }, []);
@@ -135,19 +132,18 @@ function DisplayLocation(props: any) {
   }
 
   return (
-    <Panel logoSize="60px">
+    <Panel>
       <div className='display-container'>
         <OnboardingInfoBox  fill={true} width="70%" padding={"5px"}>
           <span style={{fontSize: "12px"}}>
-            {id ? 'YOU SHARED YOUR LOCATION' : `${phonenumber} HAS SHARED THEIR LOCATION`}
+            {id ? 'YOU SHARED YOUR LOCATION' : `${phonenumber ? '+' + phonenumber?.replace(/\+/g, '') : ''} HAS SHARED THEIR LOCATION`}
           </span>
         </OnboardingInfoBox>
         <div className="detail-wrapper">
           <OnboardingInfoBox onClick={copyGeoPos}>
             <div className="info">
               <span className="info-title">GPS LOCATION - TAP TO COPY</span>
-              <span className='info-detail'>{pos?.lng}</span>
-              <span className='info-detail'>{pos?.lat}</span>
+              <span className='info-detail'>{pos?.lng}, {pos?.lat}</span>
             </div>
           </OnboardingInfoBox>
           <OnboardingInfoBox onClick={copyWhat3words}>

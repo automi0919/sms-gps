@@ -1,5 +1,4 @@
 .container {
-  margin-top: 12px;
   text-align: left;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
@@ -14,7 +13,6 @@
 
 @media(max-width: 540px) {
   .container {
-    margin-top: 5px;
     .btn-wrapper {
       margin: 20px auto;
     }

@@ -99,7 +99,7 @@ async function sendLocation(req, res, next) {
 
       var siteUrl = req.protocol + '://' + req.get('host');
       var linkUrl = `${siteUrl}/display?lat=${pos.lat}&lng=${pos.lng}&what3words=${pos.what3words}&phonenumber=${from}`;
-      console.log('reply msg: ', linkUrl);``
+      console.log('reply msg: ', linkUrl);
       var msgTemplate = getShareMessageBody(to, linkUrl);
       try {
         var success = await sendTwilioSMS(TWILIO_NUMBER, from, msgTemplate);
@@ -168,17 +168,14 @@ const sendTwilioSMS = async (from, to, msg) => {
 
 const getMessageBody = (name, msg, linkUrl) => {
   return (
-    `YOUR SAFE LOCATE GPS LOCATION HAS BEEN REQUESTED BY ${name}
-     ${msg}
-    ${linkUrl}`
+    `YOUR SAFE LOCATE GPS LOCATION HAS BEEN REQUESTED BY ${name}\n-${msg}\n${linkUrl}`
   );
 }
 
 const getShareMessageBody = (from, linkUrl) => {
 
   return (
-    `${from} SHARED THEIR LOCATION.
-    VIEW LOCATION LINK: ${linkUrl}`
+    `${from} SHARED THEIR LOCATION.\nVIEW LOCATION LINK: ${linkUrl}`
   );
 }
 

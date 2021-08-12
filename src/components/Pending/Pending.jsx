@@ -4,7 +4,7 @@ import './Pending.css'
 
 function Pending(props) {
   return (
-    <Panel logoSize="60px">
+    <Panel>
       <div className='approval-container'>
         <OnboardingButton type="button" fill={true}>GPS LOCATION PENDING APPROVAL</OnboardingButton>
         <p>

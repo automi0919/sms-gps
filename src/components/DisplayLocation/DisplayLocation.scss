@@ -1,4 +1,8 @@
 .display-container {
+  button {
+    max-height: 40px;
+    margin-bottom: 10px;
+  }
   .info {
     display: flex;
     flex-direction: column;
@@ -24,7 +28,7 @@
   .mini-map-container {
     width: 100%;
     height: 150px;
-    margin: 10px auto 15px auto;
+    margin: 0 auto 10px auto;
     border-radius: 15px;
     overflow: hidden;
   }
@@ -39,6 +43,9 @@
 }
 
 @media(max-width: 540px) {
+  button {
+    margin-bottom: 5px;
+  }
   .display-container {
     .info {
       span {

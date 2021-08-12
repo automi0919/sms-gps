@@ -9,26 +9,20 @@ const Panel = (props: PropsType) => {
     <div className='panel'>
       <div className='logo'>
         <Link to="/">
-          <img src='/assets/images/logo.png' alt='Logo' srcSet=''
-          style={{width: props.logoSize}} />
+          <img src='/assets/images/logo.png' alt='Logo' srcSet=''/>
         </Link>
-        {
-          location.pathname === '/' && (
-            <>
-              <h2 className="logo-title">safe locate</h2>
-              <label className="logo-description">sms your gps</label>
-            </>
-          )
-        }
-    
+        <div className="logo-title-layout" style={{visibility: location.pathname === '/' ? 'visible' : 'hidden'}}>
+          <h2 className="logo-title">safe locate</h2>
+          <label className="logo-description">sms your gps</label>
+        </div>
       </div>
       <div className="content-wrapper">
         {props.children}
       </div>
-      {location.pathname !== '/privacy' && location.pathname !== '/display' && location.pathname != '/about' && <Link className="copyright-wrapper" to='/privacy'>
+      {/* {location.pathname !== '/privacy' && location.pathname !== '/display' && location.pathname != '/about' && <Link className="copyright-wrapper" to='/privacy'>
         <span className="privacy-link">Privacy Policy</span>
         <span>COPYRIGHT 2021</span>
-      </Link>}
+      </Link>} */}
       {
         location.pathname !== '/' &&
         <div className="back-icon">

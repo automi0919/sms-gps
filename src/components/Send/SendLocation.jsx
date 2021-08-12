@@ -24,7 +24,7 @@ function SendLocation(props) {
   const request_state = useSelector((state) => getRequestState(state))
 
   useEffect(() => {
-    dispatch(formatRequestState())
+    dispatch(formatRequestState());
   }, [])
   console.log('_error: ', error)
   if (request_state === REQUEST_STATE.PENDING) {

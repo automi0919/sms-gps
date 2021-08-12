@@ -17,6 +17,7 @@ import {
   getRequestState,
 } from '../../store/sms/reducer'
 import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox'
+import Map from '../Map/Map'
 
 function SendMyLocation(props) {
   const dispatch = useDispatch()
@@ -28,9 +29,6 @@ function SendMyLocation(props) {
   const error = useSelector((state) => getErrorMessage(state))
 
   var pos = useSelector((state) => currentGeoLocation(state))
-  useEffect(() => {
-    dispatch(getCurrentGeoLocation())
-  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -80,7 +78,10 @@ function SendMyLocation(props) {
             value={fromName}
             onChange={setfromName}
           />
-          <OnboardingInfoBox>
+          <div className="mini-map-container">
+            <Map location={pos} zoomLevel={14} points={[pos]} />
+          </div>
+          {/* <OnboardingInfoBox>
             <div className='info'>
               <span className='info-title'>GPS LOCATION</span>
               <span className='info-detail'>latitude: {pos.lng}</span>
@@ -92,7 +93,7 @@ function SendMyLocation(props) {
               <span className='info-title'>WHAT3WORDS</span>
               <span className='info-detail'>{'///' + pos.what3words}</span>
             </div>
-          </OnboardingInfoBox>
+          </OnboardingInfoBox> */}
           <div className='btn-wrapper'>
             <OnboardingButton
               fill={true}

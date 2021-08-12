@@ -7,6 +7,7 @@ import OnboardingButton from '../common/OnboardingButton/OnboardingButton'
 import { useHistory } from 'react-router-dom'
 import { getContactUsState } from '../../store/sms/reducer'
 import { CONTACT_US_STATE, formatContactUs, sendContactUs } from '../../store/sms/actions'
+import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox'
 
 function ContactUs(props) {
   const dispatch = useDispatch()
@@ -35,10 +36,12 @@ function ContactUs(props) {
   }
 
   return (
-    <Panel logoSize="60px">
+    <Panel>
       <div className='contactus-container'>
         <div className="title-wrapper">
-          <p className="description">Say Hello to our team</p>
+          <OnboardingInfoBox fill={true} width="70%">
+            <span className="description">hello safe locate</span>
+          </OnboardingInfoBox>
         </div>
         <form className='form' onSubmit={handleSubmit}>
           <OnboardingTextInput

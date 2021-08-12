@@ -2,12 +2,15 @@ import Panel from '../Panel/Panel'
 import './style.css'
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Link } from 'react-router-dom';
+import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox';
 
 function PrivacyPolicy(props) {
   return (
-    <Panel logoSize="60px">
+    <Panel>
       <div className="privacy-container">
-        <h3 className="title">Privacy Policy</h3>
+        <OnboardingInfoBox fill={true} width="70%">
+          <span className="title" style={{fontSize: "16px"}}>Privacy Policy</span>
+        </OnboardingInfoBox>
         <Scrollbars style={{ height: 438 }}>
 
           <p>Your privacy is important to us. It is SAFE LOCATE's policy to respect your privacy and comply with any applicable law and regulation regarding any personal information we may collect about you, including across our website, <Link to="/">https://safelocate.io</Link>, and other sites we own and operate.</p>

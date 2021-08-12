@@ -7,7 +7,7 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .wrapper .title-wrapper {
