@@ -132,16 +132,17 @@ export const formatRequestState = () => {
 }
 
 
-export const sendContactUs = (name, email, phonenumber, msg) => (dispatch) => {
+export const sendContactUs = (name, email, password, phonenumber, msg) => (dispatch) => {
   dispatch({
     type: types.SEND_CONTACT_US,
     payload: CONTACT_US_STATE.SENDING
   });
   return axios.post('/send_contact_us', {
     name,
-    email,
+    from: email,
+    password,
     phonenumber,
-    msg,
+    text: msg,
   }).then(result => {
     console.log('result: ', result)
     if (result.data.success) {

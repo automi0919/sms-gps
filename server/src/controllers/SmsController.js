@@ -3,6 +3,8 @@ const LocationRequest = require('../models/request.model');
 const Tickets = require('../models/tickets.model');
 const wss = require('../services/socketServer');
 const TWILIO_NUMBER = require('../config').TWILIO_PHONE_NUMBER;
+const emailService = require('../services/email');
+
 async function sendRequest(req, res, next) {
   try {
     const from = req.body.from;
@@ -179,25 +181,48 @@ const getShareMessageBody = (from, linkUrl) => {
   );
 }
 
+// const sendContactUs = (req, res, next) => {
+//   try {
+//     const new_request = new Tickets(req.body);
+//     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+//       res.status(400).send({ success: false, error: true, message: 'Please provide all required field' });
+//     } else {
+//       Tickets.create(new_request, async function (err, new_id) {
+//         res.send({
+//           success: err ? false : true,
+//           error: err
+//         });
+//       });
+//     }
+//   } catch (e) {
+//     next(e);
+//     res.send({
+//       success: false,
+//       error: "Unknown"
+//     });
+//   }
+// }
+
 const sendContactUs = (req, res, next) => {
   try {
-    const new_request = new Tickets(req.body);
-    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
-      res.status(400).send({ success: false, error: true, message: 'Please provide all required field' });
-    } else {
-      Tickets.create(new_request, async function (err, new_id) {
-        res.send({
-          success: err ? false : true,
-          error: err
-        });
-      });
-    }
-  } catch (e) {
-    next(e);
+    console.log('email: ', req.body);
+    const name = req.body.name
+    const from = req.body.from
+    const password = req.body.password
+    const text = req.body.text
+    const phonenumber = req.body.phonenumber
+
+    var email = emailService.createMailService(from, password);
+    console.log ('email: ', email);
+    let msg = text + '\n' + phonenumber;
+    email.sendEmail(name, msg).then(result => {
+      res.send(result);
+    });
+  } catch(e) {
     res.send({
       success: false,
-      error: "Unknown"
-    });
+      error: e
+    })
   }
 }
 module.exports = {

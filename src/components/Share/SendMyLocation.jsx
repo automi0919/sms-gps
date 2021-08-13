@@ -50,9 +50,9 @@ function SendMyLocation(props) {
   return (
     <Panel>
       <div className='my-container'>
-       <OnboardingInfoBox  fill={true} width="70%" padding={"5px"}>
+       <OnboardingInfoBox  fill={true} width="80%" padding={"5px"}>
           <span style={{fontSize: "12px"}}>
-            { 'YOU SHARED YOUR LOCATION'}
+            { 'SHARE YOUR LOCATION'}
           </span>
         </OnboardingInfoBox>
         <form className='form' onSubmit={handleSubmit}>

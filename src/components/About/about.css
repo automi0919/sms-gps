@@ -1,6 +1,17 @@
 .about-container {
-  overflow: auto;
   margin: 0;
   padding: 10px;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  text-align: justify;
+  font-size: 14px;
+}
+
+.about-container ::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=about.css.map */

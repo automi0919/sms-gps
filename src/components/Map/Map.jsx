@@ -232,6 +232,7 @@ const Map = (props) => {
       <div className='google-map'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCO34vxnjcT_NlL8oP6BtF-A2E9AqN2u-k" }}
+          // bootstrapURLKeys={{ key: "AIzaSyCsPucz3DC6CLaiBWKaGqTwOydemBtCTrg" }}
           center={center}
           zoom={zoomLevel}
           options={createMapOptions}

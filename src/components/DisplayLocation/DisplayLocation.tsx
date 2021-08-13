@@ -50,6 +50,7 @@ function DisplayLocation(props: any) {
   const type = getType(urlParams);
   var pos: Pos = {lat: '', lng: '', what3words: ''};
 
+  var color = '';
   const triggerModal = () => {
     setModalShow(true);
   }
@@ -59,11 +60,13 @@ function DisplayLocation(props: any) {
       break;
     case 'SHARED':
       pos = {lat, lng, what3words}; 
-      props.handleNotification('info', 'You have shared location');
+      color = 'green';
+      // props.handleNotification('info', 'You have shared location');
       break;
     case 'APPROVED':
       pos = approvedPosData?.approvedPos;
       phonenumber = approvedPosData?.phonenumber;
+      color = 'green';
       props.handleNotification('info', 'Your request has been approved!');
       break;
   }
@@ -134,7 +137,7 @@ function DisplayLocation(props: any) {
   return (
     <Panel>
       <div className='display-container'>
-        <OnboardingInfoBox  fill={true} width="70%" padding={"5px"}>
+        <OnboardingInfoBox  fill={true} width="80%" padding={"5px"} color={color}>
           <span style={{fontSize: "12px"}}>
             {id ? 'YOU SHARED YOUR LOCATION' : `${phonenumber ? '+' + phonenumber?.replace(/\+/g, '') : ''} HAS SHARED THEIR LOCATION`}
           </span>
@@ -161,7 +164,7 @@ function DisplayLocation(props: any) {
           <OnboardingButton type="button" fill={true} onClick={openWhat3Words}>
             open in what3words
           </OnboardingButton>
-          <OnboardingButton type="button" fill={true} onClick={shareLocation}>
+          <OnboardingButton type="phone" fill={true} color="red">
             call emergency services
           </OnboardingButton>
         </div>

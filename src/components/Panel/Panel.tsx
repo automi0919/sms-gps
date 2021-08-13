@@ -19,10 +19,10 @@ const Panel = (props: PropsType) => {
       <div className="content-wrapper">
         {props.children}
       </div>
-      {/* {location.pathname !== '/privacy' && location.pathname !== '/display' && location.pathname != '/about' && <Link className="copyright-wrapper" to='/privacy'>
+      {location.pathname !== '/privacy' && location.pathname !== '/display' && location.pathname != '/about' && <Link className="copyright-wrapper" to='/privacy'>
         <span className="privacy-link">Privacy Policy</span>
         <span>COPYRIGHT 2021</span>
-      </Link>} */}
+      </Link>}
       {
         location.pathname !== '/' &&
         <div className="back-icon">

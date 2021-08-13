@@ -8,10 +8,10 @@ function PrivacyPolicy(props) {
   return (
     <Panel>
       <div className="privacy-container">
-        <OnboardingInfoBox fill={true} width="70%">
+        <OnboardingInfoBox fill={true} width="80%">
           <span className="title" style={{fontSize: "16px"}}>Privacy Policy</span>
         </OnboardingInfoBox>
-        <Scrollbars style={{ height: 438 }}>
+        <Scrollbars style={{ height: "60vh" }}>
 
           <p>Your privacy is important to us. It is SAFE LOCATE's policy to respect your privacy and comply with any applicable law and regulation regarding any personal information we may collect about you, including across our website, <Link to="/">https://safelocate.io</Link>, and other sites we own and operate.</p>
 

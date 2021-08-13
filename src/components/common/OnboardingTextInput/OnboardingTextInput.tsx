@@ -42,7 +42,7 @@ const OnboardingTextInput = (props: PropsType) => {
 
 interface PropsType {
   onClick?: () => void;
-  type?: "text" | "number" | "email" | undefined;
+  type?: "text" | "number" | "email" | "password" | undefined;
   readonly?: boolean;
   required?: boolean;
   value: string;

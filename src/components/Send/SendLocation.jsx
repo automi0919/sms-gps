@@ -12,6 +12,7 @@ import OnboardingTextInput from '../common/OnboardingTextInput/OnboardingTextInp
 import OnboardingButton from '../common/OnboardingButton/OnboardingButton'
 import { useHistory } from 'react-router-dom'
 import { getErrorMessage, getRequestState } from '../../store/sms/reducer'
+import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox'
 
 function SendLocation(props) {
   const dispatch = useDispatch()
@@ -48,6 +49,11 @@ function SendLocation(props) {
   return (
     <Panel>
       <div className='container'>
+        <OnboardingInfoBox  fill={true} width="80%" padding={"5px"}>
+          <span style={{fontSize: "12px"}}>
+            REQUEST GPS LOCATION
+          </span>
+        </OnboardingInfoBox>
         <form className='form' onSubmit={handleSubmit}>
           <OnboardingTextInput
             type='text'

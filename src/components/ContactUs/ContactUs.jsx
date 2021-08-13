@@ -12,6 +12,7 @@ import OnboardingInfoBox from '../common/OnboardingInfoBox/OnboardingInfoBox'
 function ContactUs(props) {
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('');
   const [name, setName] = useState('')
   const [phonenumber, setPhoneNumber] = useState('')
   const [msg, setMsg] = useState('')
@@ -23,7 +24,7 @@ function ContactUs(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(sendContactUs(name, email, phonenumber, msg))
+    dispatch(sendContactUs(name, email, password, phonenumber, msg))
   }
 
   if (contact_us_state === CONTACT_US_STATE.DONE) {
@@ -31,7 +32,7 @@ function ContactUs(props) {
     history.push('/');
     dispatch(formatContactUs())
   } else if (contact_us_state === CONTACT_US_STATE.FAILD) {
-    props.handleNotification('error', 'Sorry. Unknown error has been occurd');
+    props.handleNotification('error', 'Sorry. Your password might not correct');
     dispatch(formatContactUs());
   }
 
@@ -39,7 +40,7 @@ function ContactUs(props) {
     <Panel>
       <div className='contactus-container'>
         <div className="title-wrapper">
-          <OnboardingInfoBox fill={true} width="70%">
+          <OnboardingInfoBox fill={true} width="80%">
             <span className="description">hello safe locate</span>
           </OnboardingInfoBox>
         </div>
@@ -59,10 +60,18 @@ function ContactUs(props) {
             required={true}
           />
           <OnboardingTextInput
+            type='password'
+            placeholder="YOUR EMAIL PASSWORD*"
+            value={password}
+            onChange={setPassword}
+            required={true}
+          />
+          <OnboardingTextInput
             type='text'
             placeholder='YOUR NUMBER(OPTIONAL)'
             value={phonenumber}
             onChange={setPhoneNumber}
+            mask="+6\1 999 999 999"
           />
           <OnboardingTextInput
             type='text'
