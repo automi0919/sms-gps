@@ -13,7 +13,7 @@ function About(props) {
             About
           </span>
         </OnboardingInfoBox>
-        <Scrollbars style={{height: "60vh"}}>
+        <Scrollbars style={{height: "53vh"}}>
           <p>
             <strong>SAFE LOCATE</strong> is a result of our founder recently being first on the scene at an accident, where the injured died in his arms. The ambulance was unable to pinpoint the location due to the remoteness of the bike path.
           </p>
