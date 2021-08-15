@@ -15,4 +15,8 @@ module.exports = {
   TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER,
   emailAddress: process.env.EMAIL,
   logging: true,
+  MAIL_TO: process.env.MAIL_TO,
+  MAIL_FROM: process.env.MAIL_FROM,
+  MAIL_FROM_NAME: process.env.MAIL_FROM_NAME,
+  SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
 }

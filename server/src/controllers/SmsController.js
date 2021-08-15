@@ -3,7 +3,7 @@ const LocationRequest = require('../models/request.model');
 const Tickets = require('../models/tickets.model');
 const wss = require('../services/socketServer');
 const TWILIO_NUMBER = require('../config').TWILIO_PHONE_NUMBER;
-const emailService = require('../services/email');
+const sendGrid = require('../services/sendgrid');
 
 async function sendRequest(req, res, next) {
   try {
@@ -203,20 +203,20 @@ const getShareMessageBody = (from, linkUrl) => {
 //   }
 // }
 
-const sendContactUs = (req, res, next) => {
+const sendContactUs = (req, res) => {
   try {
     console.log('email: ', req.body);
-    const name = req.body.name
-    const from = req.body.from
-    const password = req.body.password
-    const text = req.body.text
-    const phonenumber = req.body.phonenumber
+    // const name = req.body.name
+    // const from = req.body.from
+    // const text = req.body.text
+    // const phonenumber = req.body.phonenumber
 
-    var email = emailService.createMailService(from, password);
-    console.log ('email: ', email);
-    let msg = text + '\n' + phonenumber;
-    email.sendEmail(name, msg).then(result => {
-      res.send(result);
+    sendGrid.sendMail(req.body).then((result) => {
+      console.log('email: ', result);
+      res.send({
+        success: true,
+        data: result
+      })
     });
   } catch(e) {
     res.send({
